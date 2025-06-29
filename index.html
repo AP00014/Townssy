@@ -26,6 +26,83 @@
             </div>
         </div>
     </div>
+
+
+
+<!-- Youth Program Modal -->
+<div class="youth-modal-overlay" id="youthModal">
+  <div class="youth-form-container">
+    <button class="youth-modal-close" id="closeYouthModal">×</button>
+    <h2 class="youth-form-title">Join Our Youth Program</h2>
+    
+    <form id="youthApplicationForm" action="https://formspree.io/f/YOUR_FORMSPREE_ID" method="POST">
+      <input type="hidden" name="_subject" value="New Youth Program Application">
+      
+      <div class="form-field">
+        <label for="youthName">Full Name*</label>
+        <input type="text" id="youthName" name="name" required>
+      </div>
+      
+      <div class="form-field">
+        <label for="youthEmail">Email*</label>
+        <input type="email" id="youthEmail" name="email" required>
+      </div>
+      
+      <div class="form-field">
+        <label for="youthAge">Age*</label>
+        <input type="number" id="youthAge" name="age" min="13" max="35" required>
+      </div>
+      
+      <div class="form-field">
+        <label>Areas of Interest*</label>
+        <div class="interest-options">
+          <label class="interest-checkbox">
+            <input type="checkbox" name="interests[]" value="Art & Design">
+            <span class="checkmark"></span>
+            Art & Design
+          </label>
+          <label class="interest-checkbox">
+            <input type="checkbox" name="interests[]" value="Technology">
+            <span class="checkmark"></span>
+            Technology
+          </label>
+          <label class="interest-checkbox">
+            <input type="checkbox" name="interests[]" value="Business">
+            <span class="checkmark"></span>
+            Business
+          </label>
+        </div>
+      </div>
+      
+      <div class="form-field">
+        <label for="youthMessage">Why do you want to join? (Optional)</label>
+        <textarea id="youthMessage" name="message" rows="4"></textarea>
+      </div>
+      
+      <button type="submit" class="submit-btn">Submit Application</button>
+    </form>
+  </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     
     <!-- Header with Mobile Menu -->
     <header id="header">
@@ -174,7 +251,7 @@
                         <li>Join a community of empowered local vendors</li>
                         <li>Access marketing and business development resources</li>
                     </ul>
-                    <a href="#" class="btn btn-primary">Join as a Vendor</a>
+                    <a href="https://wa.me/233257785088?text=I%20want%20to%20join%20as%20a%20vendor" class="btn btn-primary">Join as a Vendor</a>
                 </div>
                 <div class="split-image">
                     <div class="icon-container"><i class="fas fa-store"></i></div>
@@ -198,7 +275,7 @@
                         <li>Youth Creations (art, music, crafts)</li>
                         <li>Local Services & Experiences</li>
                     </ul>
-                    <a href="#" class="btn btn-secondary">Start Shopping Now</a>
+                    <a href="./shop/shop.html" class="btn btn-secondary">Start Shopping Now</a>
                 </div>
                 <div class="split-image">
                     <div class="icon-container"><i class="fas fa-shopping-bag"></i></div>
@@ -237,7 +314,9 @@
                 </div>
             </div>
             
-            <a href="#" class="btn btn-primary animate-on-scroll" style="margin-top: 3rem;">Join Our Youth Program</a>
+           <a id="youthProgramBtn" class="btn btn-primary animate-on-scroll" style="margin-top: 3rem;">
+  Join Our Youth Program
+</a>
         </div>
     </section>
 

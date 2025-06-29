@@ -1152,3 +1152,225 @@
             }
         }
     
+
+/* Enhanced Youth Program Modal */
+.youth-modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.7);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  backdrop-filter: blur(4px);
+}
+
+.youth-modal-overlay.active {
+  opacity: 1;
+  visibility: visible;
+}
+
+.youth-form-container {
+  background: white;
+  border-radius: 16px;
+  width: 90%;
+  max-width: 450px; /* More compact width */
+  padding: 2rem 1.5rem;
+  position: relative;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+  transform: translateY(20px);
+  transition: transform 0.3s ease, opacity 0.3s ease;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.youth-modal-overlay.active .youth-form-container {
+  transform: translateY(0);
+}
+
+.youth-modal-close {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  background: none;
+  border: none;
+  font-size: 1.8rem;
+  cursor: pointer;
+  color: #666;
+  transition: color 0.2s ease;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+}
+
+.youth-modal-close:hover {
+  color: #333;
+  background: rgba(0, 0, 0, 0.05);
+}
+
+.youth-form-title {
+  font-size: 1.5rem;
+  color: var(--primary);
+  margin-bottom: 1.25rem;
+  text-align: center;
+  font-weight: 600;
+  letter-spacing: -0.5px;
+}
+
+/* Form Styles */
+.form-field {
+  margin-bottom: 1.25rem;
+}
+
+.form-field label {
+  display: block;
+  margin-bottom: 0.4rem;
+  font-weight: 500;
+  font-size: 0.9rem;
+  color: #555;
+}
+
+.form-field input[type="text"],
+.form-field input[type="email"],
+.form-field input[type="number"],
+.form-field textarea {
+  width: 100%;
+  padding: 0.7rem;
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+  font-size: 0.9rem;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.form-field input:focus,
+.form-field textarea:focus {
+  outline: none;
+  border-color: var(--primary);
+  box-shadow: 0 0 0 3px rgba(44, 122, 87, 0.1);
+}
+
+.form-field textarea {
+  min-height: 100px;
+  resize: vertical;
+}
+
+/* Checkbox Styles */
+.interest-options {
+  display: grid;
+  gap: 0.6rem;
+}
+
+.interest-checkbox {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  font-size: 0.9rem;
+  position: relative;
+  padding-left: 30px;
+  min-height: 24px;
+}
+
+.interest-checkbox input {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+}
+
+.checkmark {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 20px;
+  height: 20px;
+  background-color: #f8f8f8;
+  border-radius: 5px;
+  border: 1px solid #ddd;
+  transition: all 0.2s ease;
+}
+
+.interest-checkbox:hover .checkmark {
+  background-color: #eee;
+}
+
+.interest-checkbox input:checked ~ .checkmark {
+  background-color: var(--primary);
+  border-color: var(--primary);
+}
+
+.checkmark:after {
+  content: "";
+  position: absolute;
+  display: none;
+  left: 7px;
+  top: 3px;
+  width: 5px;
+  height: 10px;
+  border: solid white;
+  border-width: 0 2px 2px 0;
+  transform: rotate(45deg);
+}
+
+.interest-checkbox input:checked ~ .checkmark:after {
+  display: block;
+}
+
+/* Submit Button */
+.submit-btn {
+  background: var(--primary);
+  color: white;
+  border: none;
+  padding: 0.8rem;
+  border-radius: 8px;
+  cursor: pointer;
+  width: 100%;
+  font-size: 0.95rem;
+  font-weight: 500;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  transition: all 0.3s ease;
+  margin-top: 0.5rem;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.submit-btn:hover {
+  background: var(--primary-dark);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+}
+
+.submit-btn:active {
+  transform: translateY(0);
+}
+
+/* Responsive Adjustments */
+@media (max-width: 480px) {
+  .youth-form-container {
+    padding: 1.5rem 1rem;
+    max-width: 95%;
+  }
+  
+  .youth-form-title {
+    font-size: 1.3rem;
+  }
+  
+  .form-field label {
+    font-size: 0.85rem;
+  }
+  
+  .interest-checkbox {
+    font-size: 0.85rem;
+  }
+  
+  .submit-btn {
+    padding: 0.7rem;
+    font-size: 0.9rem;
+  }
+}

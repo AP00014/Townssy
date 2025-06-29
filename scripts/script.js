@@ -124,3 +124,63 @@
             window.scrollTo({ top: 0, behavior: 'smooth' });
         });
     
+
+        document.addEventListener('DOMContentLoaded', function() {
+  // Get elements
+  const youthProgramBtn = document.getElementById('youthProgramBtn');
+  const youthModal = document.getElementById('youthModal');
+  const closeYouthModal = document.getElementById('closeYouthModal');
+  const youthForm = document.getElementById('youthApplicationForm');
+
+  // Open modal when button is clicked
+  youthProgramBtn.addEventListener('click', function(e) {
+    e.preventDefault();
+    youthModal.classList.add('active');
+  });
+
+  // Close modal
+  closeYouthModal.addEventListener('click', function() {
+    youthModal.classList.remove('active');
+  });
+
+  // Close when clicking outside form
+  youthModal.addEventListener('click', function(e) {
+    if (e.target === youthModal) {
+      youthModal.classList.remove('active');
+    }
+  });
+
+  // Form submission
+  youthForm.addEventListener('submit', async function(e) {
+    e.preventDefault();
+    
+    // Validate at least one interest is checked
+    const checkedInterests = document.querySelectorAll('input[name="interests[]"]:checked');
+    if (checkedInterests.length === 0) {
+      alert('Please select at least one area of interest');
+      return;
+    }
+
+    // Submit to Formspree
+    try {
+      const response = await fetch(youthForm.action, {
+        method: 'POST',
+        body: new FormData(youthForm),
+        headers: {
+          'Accept': 'application/json'
+        }
+      });
+
+      if (response.ok) {
+        alert('Thank you for your application! We will contact you soon.');
+        youthModal.classList.remove('active');
+        youthForm.reset();
+      } else {
+        throw new Error('Form submission failed');
+      }
+    } catch (error) {
+      console.error('Error:', error);
+      alert('There was an error submitting your application. Please try again later.');
+    }
+  });
+});

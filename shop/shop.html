@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Townssy Marketplace - Products & Services</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&family=Poppins:wght@600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+    <!-- Header Section -->
+    <header>
+        <div class="top-header">
+            <div class="container top-header-container">
+                <div class="contact-links">
+                    <a href="tel:+233257785088"><i class="fas fa-phone"></i> +233 25 778 5088</a>
+                    <a href="mailto:info@townssy.com"><i class="fas fa-envelope"></i> info@townssy.com</a>
+                </div>
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-whatsapp"></i></a>
+                </div>
+            </div>
+        </div>
+        
+        <div class="container">
+            <div class="main-header">
+                <a href="#" class="logo"><i class="fas fa-store"></i> Townssy</a>
+                
+                <div class="nav-tabs">
+                    <div class="nav-tab active" data-tab="products">Products</div>
+                    <div class="nav-tab" data-tab="services">Services</div>
+                </div>
+                
+                <div class="user-actions">
+                    <a href="#"><i class="fas fa-bookmark"></i> Saved</a>
+                    <a href="#"><i class="fas fa-user"></i> Account</a>
+                </div>
+            </div>
+        </div>
+    </header>
+    
+    <!-- Banner Section -->
+    <section class="banner-section">
+        <div class="container">
+            <div class="banner-content">
+                <h1>Your Marketplace for Products & Services</h1>
+                <p>Find quality products from trusted suppliers or hire skilled professionals for your projects</p>
+                
+                <div class="banner-buttons">
+                    <a href="https://wa.me/233257785088?text=Hello%20Townssy%20consultant,%20I%20need%20assistance" class="btn btn-primary">
+                        <i class="fab fa-whatsapp"></i> Chat with Consultant
+                    </a>
+                    <a href="#" class="btn btn-secondary">
+                        <i class="fas fa-users"></i> Join Our Community
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <div class="container">
+        <!-- Notice Banner -->
+        <div class="notice-banner">
+            <i class="fas fa-exclamation-circle"></i>
+            Note: All transactions occur directly between buyers and sellers. No payments are processed on this platform.
+        </div>
+        
+        <!-- Main Content -->
+        <div class="main-content">
+            <!-- Filters Sidebar -->
+            <aside class="filters-sidebar">
+                <div class="filter-section">
+                    <h3>Categories</h3>
+                    <div class="filter-options" id="category-filter">
+                        <!-- Will be populated by JavaScript -->
+                    </div>
+                </div>
+                
+                <div class="filter-section">
+                    <h3>Price Range</h3>
+                    <div class="price-range">
+                        <input type="number" id="min-price" placeholder="Min" min="0">
+                        <input type="number" id="max-price" placeholder="Max" min="0">
+                    </div>
+                    <div class="filter-buttons">
+                        <button class="apply-btn" id="apply-price">Apply</button>
+                        <button class="reset-btn" id="reset-price">Reset</button>
+                    </div>
+                </div>
+                
+                <div class="filter-section">
+                    <h3>Location</h3>
+                    <div class="filter-options" id="location-filter">
+                        <!-- Will be populated by JavaScript -->
+                    </div>
+                </div>
+                
+                <div class="filter-section">
+                    <h3>Supplier Type</h3>
+                    <div class="filter-options" id="type-filter">
+                        <!-- Will be populated by JavaScript -->
+                    </div>
+                </div>
+            </aside>
+            
+            <!-- Products Section -->
+            <section class="products-section active-section" id="products-section">
+                <div class="section-header">
+                    <h2>Featured Products</h2>
+                    <div class="sort-options">
+                        <select id="product-sort">
+                            <option value="featured">Sort by: Featured</option>
+                            <option value="price-low">Price: Low to High</option>
+                            <option value="price-high">Price: High to Low</option>
+                            <option value="newest">Newest First</option>
+                        </select>
+                    </div>
+                </div>
+                
+                <div class="products-grid" id="products-container">
+                    <!-- Products will be populated by JavaScript -->
+                </div>
+            </section>
+            
+            <!-- Services Section -->
+            <section class="services-section" id="services-section">
+                <div class="section-header">
+                    <h2>Professional Services</h2>
+                    <div class="sort-options">
+                        <select id="service-sort">
+                            <option value="featured">Sort by: Featured</option>
+                            <option value="price-low">Price: Low to High</option>
+                            <option value="price-high">Price: High to Low</option>
+                            <option value="rating">Highest Rated</option>
+                        </select>
+                    </div>
+                </div>
+                
+                <div class="service-categories" id="service-categories">
+                    <!-- Service categories will be populated by JavaScript -->
+                </div>
+                
+                <div class="services-grid" id="services-container">
+                    <!-- Services will be populated by JavaScript -->
+                </div>
+            </section>
+        </div>
+        
+        <!-- Featured Suppliers -->
+        <section class="additional-section">
+            <h2>Trusted Providers</h2>
+            <div class="supplier-cards">
+                <!-- Will be populated by JavaScript -->
+            </div>
+        </section>
+    </div>
+    
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3>About Townssy</h3>
+                    <p>Connecting buyers with trusted suppliers and service providers. Our platform makes commerce easier and more reliable.</p>
+                    <div class="social-links" style="margin-top: 20px;">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-whatsapp"></i></a>
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Products</h3>
+                    <ul class="footer-links">
+                        <li><a href="#"><i class="fas fa-chevron-right"></i> Electronics</a></li>
+                        <li><a href="#"><i class="fas fa-chevron-right"></i> Home & Garden</a></li>
+                        <li><a href="#"><i class="fas fa-chevron-right"></i> Apparel</a></li>
+                        <li><a href="#"><i class="fas fa-chevron-right"></i> Machinery</a></li>
+                        <li><a href="#"><i class="fas fa-chevron-right"></i> Beauty & Personal Care</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Services</h3>
+                    <ul class="footer-links">
+                        <li><a href="#"><i class="fas fa-chevron-right"></i> Design & Creative</a></li>
+                        <li><a href="#"><i class="fas fa-chevron-right"></i> Digital Marketing</a></li>
+                        <li><a href="#"><i class="fas fa-chevron-right"></i> Writing & Translation</a></li>
+                        <li><a href="#"><i class="fas fa-chevron-right"></i> Programming & Tech</a></li>
+                        <li><a href="#"><i class="fas fa-chevron-right"></i> Business Consulting</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Contact Us</h3>
+                    <ul class="footer-links">
+                        <li><a href="#"><i class="fas fa-map-marker-alt"></i> Accra, Ghana</a></li>
+                        <li><a href="tel:+233257785088"><i class="fas fa-phone"></i> +233 25 778 5088</a></li>
+                        <li><a href="mailto:info@townssy.com"><i class="fas fa-envelope"></i> info@townssy.com</a></li>
+                        <li><a href="https://wa.me/233257785088"><i class="fab fa-whatsapp"></i> WhatsApp Support</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="copyright">
+                <p>&copy; 2023 Townssy Marketplace. All rights reserved. | Connecting Global Buyers and Providers</p>
+            </div>
+        </div>
+    </footer>
+    
+  <script src="./script.js"></script>
+</body>
+</html>
