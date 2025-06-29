@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Townssy - Empowering Local Commerce</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick-theme.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&family=Montserrat:wght@700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="./styles/style.css">
+</head>
+<body>
+    <!-- Welcome Modal -->
+    <div class="modal-overlay active" id="welcomeModal">
+        <div class="welcome-modal">
+            <div class="modal-icon">
+                <i class="fas fa-store"></i>
+            </div>
+            <h2>Welcome to Townssy In Town!</h2>
+            <p>Where convenience meets community! If you've ever wished you could get the best products right at your doorstep or connect with trusted businesses without stress, Townssy is here to make that possible.</p>
+            <p>We're more than a business - we're a movement connecting quality businesses to the people who need them most.</p>
+            <a href="#" class="btn btn-primary modal-btn" id="closeModalBtn">Explore Townssy</a>
+            <div class="modal-close" id="closeModal">
+                <i class="fas fa-times"></i>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Header with Mobile Menu -->
+    <header id="header">
+        <div class="container navbar">
+            <a href="#" class="logo"><i class="fas fa-store"></i> Townssy</a>
+            
+            <!-- Desktop Navigation -->
+            <ul class="nav-links">
+                <li><a href="#hero">Home</a></li>
+                <li><a href="#features">Features</a></li>
+                <li><a href="#testimonials">Testimonials</a></li>
+                <li><a href="#how-it-works">How It Works</a></li>
+                <li><a href="#for-vendors">For Vendors</a></li>
+                <li><a href="#for-customers">For Customers</a></li>
+                <li><a href="#youth-empowerment">Youth</a></li>
+            </ul>
+            
+            <!-- Mobile Menu Button -->
+            <div class="hamburger" id="hamburger">
+                <div class="line1"></div>
+                <div class="line2"></div>
+                <div class="line3"></div>
+            </div>
+        </div>
+        
+        <!-- Mobile Menu -->
+        <div class="mobile-menu" id="mobileMenu">
+            <ul>
+                <li><a href="#hero">Home</a></li>
+                <li><a href="#features">Features</a></li>
+                <li><a href="#testimonials">Testimonials</a></li>
+                <li><a href="#how-it-works">How It Works</a></li>
+                <li><a href="#for-vendors">For Vendors</a></li>
+                <li><a href="#for-customers">For Customers</a></li>
+                <li><a href="#youth-empowerment">Youth Program</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="hero">
+        <div class="container">
+            <div class="hero-content">
+                <div class="hero-tagline animate-on-scroll">Empowering Local Commerce in Bolgatanga</div>
+                <h1 class="animate-on-scroll">Shop Local, <span style="color: var(--secondary);">Grow Together!</span></h1>
+                <p class="hero-text animate-on-scroll">Welcome to Townssy, your one-stop platform for affordable, high-quality products and services from local vendors. Empower youth, support small businesses, and enjoy doorstep delivery—all in Bolgatanga!</p>
+                <div class="hero-btns">
+                    <a href="#for-vendors" class="btn btn-primary animate-on-scroll">Join as a Vendor</a>
+                    <a href="#for-customers" class="btn btn-secondary animate-on-scroll">Shop Now</a>
+                </div>
+            </div>
+        </div>
+        <div class="hero-bg-shapes">
+            <div class="shape shape-1"></div>
+            <div class="shape shape-2"></div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section id="features">
+        <div class="container text-center">
+            <h2 class="animate-on-scroll">Why Choose Townssy?</h2>
+            <div class="features-grid">
+                <div class="feature-card animate-on-scroll">
+                    <div class="feature-icon"><i class="fas fa-shopping-basket"></i></div>
+                    <h3>Local Products</h3>
+                    <p>Access fresh produce, handmade crafts, and more from trusted local vendors.</p>
+                </div>
+                <div class="feature-card animate-on-scroll" style="transition-delay: 0.2s">
+                    <div class="feature-icon"><i class="fas fa-truck"></i></div>
+                    <h3>Doorstep Delivery</h3>
+                    <p>Enjoy convenient delivery to your home or office.</p>
+                </div>
+                <div class="feature-card animate-on-scroll" style="transition-delay: 0.4s">
+                    <div class="feature-icon"><i class="fas fa-users"></i></div>
+                    <h3>Youth Empowerment</h3>
+                    <p>Provide opportunities for young people to showcase their talents and grow their skills.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section with Slick Slider -->
+    <section id="testimonials">
+        <div class="container text-center">
+            <h2 class="animate-on-scroll">What People Say</h2>
+            <div class="testimonial-slider">
+                <div class="testimonial-slide">
+                    <p class="testimonial-text">Townssy has made shopping so easy! I love supporting local businesses. The quality of products is amazing and delivery is always on time.</p>
+                    <div class="testimonial-author">- Sarah K., Customer</div>
+                </div>
+                <div class="testimonial-slide">
+                    <p class="testimonial-text">Thanks to Townssy, I've been able to reach more customers and grow my business. The platform is user-friendly and the support team is excellent.</p>
+                    <div class="testimonial-author">- Michael A., Vendor</div>
+                </div>
+                <div class="testimonial-slide">
+                    <p class="testimonial-text">I love the convenience of Townssy—it's like having a marketplace at my fingertips! The youth empowerment program has changed my life.</p>
+                    <div class="testimonial-author">- Grace M., Customer</div>
+                </div>
+                <div class="testimonial-slide">
+                    <p class="testimonial-text">As a young artist, Townssy gave me a platform to showcase my work and earn an income. This initiative is transforming our community.</p>
+                    <div class="testimonial-author">- Kwame B., Youth Artist</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- How It Works Section -->
+    <section id="how-it-works">
+        <div class="container text-center">
+            <h2 class="animate-on-scroll">How It Works</h2>
+            <div class="steps-container">
+                <div class="step-card animate-on-scroll">
+                    <div class="step-number">1</div>
+                    <div class="step-icon"><i class="fas fa-store"></i></div>
+                    <h3>Vendors List Products</h3>
+                    <p>Local businesses and artisans list their offerings on Townssy's platform.</p>
+                </div>
+                <div class="step-card animate-on-scroll" style="transition-delay: 0.2s">
+                    <div class="step-number">2</div>
+                    <div class="step-icon"><i class="fas fa-shopping-cart"></i></div>
+                    <h3>Customers Order</h3>
+                    <p>Residents browse the platform, select products/services, and place orders online.</p>
+                </div>
+                <div class="step-card animate-on-scroll" style="transition-delay: 0.4s">
+                    <div class="step-number">3</div>
+                    <div class="step-icon"><i class="fas fa-truck"></i></div>
+                    <h3>Doorstep Delivery</h3>
+                    <p>We ensure your order is delivered to your doorstep quickly and conveniently.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- For Vendors Section -->
+    <section id="for-vendors">
+        <div class="container">
+            <h2 class="animate-on-scroll">Grow Your Business with Townssy!</h2>
+            <div class="split-section animate-on-scroll">
+                <div class="split-content">
+                    <p>Join our platform to reach more customers and grow your business sustainably. Townssy provides the tools and audience you need to thrive in Bolgatanga's local economy.</p>
+                    <ul class="benefits-list">
+                        <li>Reach more customers beyond your physical location</li>
+                        <li>Get paid seamlessly through our secure platform</li>
+                        <li>Join a community of empowered local vendors</li>
+                        <li>Access marketing and business development resources</li>
+                    </ul>
+                    <a href="#" class="btn btn-primary">Join as a Vendor</a>
+                </div>
+                <div class="split-image">
+                    <div class="icon-container"><i class="fas fa-store"></i></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- For Customers Section -->
+    <section id="for-customers">
+        <div class="container">
+            <h2 class="animate-on-scroll">Shop Local, Support Your Community!</h2>
+            <div class="split-section reverse animate-on-scroll">
+                <div class="split-content">
+                    <p>Discover the best of Bolgatanga right at your fingertips. From fresh produce to unique handmade crafts, support your local community while enjoying quality products.</p>
+                    <h3>Product Categories</h3>
+                    <ul class="benefits-list">
+                        <li>Fresh Produce & Farm Products</li>
+                        <li>Handmade Crafts & Artwork</li>
+                        <li>Ready-to-Eat Meals & Local Delicacies</li>
+                        <li>Youth Creations (art, music, crafts)</li>
+                        <li>Local Services & Experiences</li>
+                    </ul>
+                    <a href="#" class="btn btn-secondary">Start Shopping Now</a>
+                </div>
+                <div class="split-image">
+                    <div class="icon-container"><i class="fas fa-shopping-bag"></i></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Youth Empowerment Section -->
+    <section id="youth-empowerment">
+        <div class="container text-center">
+            <h2 class="animate-on-scroll">Unlock Your Potential with Townssy!</h2>
+            <p class="animate-on-scroll">Townssy provides a platform for young people in Bolgatanga to showcase their talents, build skills, and generate income. Whether you're an artist, musician, or entrepreneur, we're here to help you succeed.</p>
+            
+            <div class="cards-container">
+                <div class="talent-card animate-on-scroll">
+                    <div class="talent-header">Artists</div>
+                    <div class="talent-body">
+                        <div class="talent-icon"><i class="fas fa-paint-brush"></i></div>
+                        <p>Showcase your paintings, drawings, and visual art to a wider audience.</p>
+                    </div>
+                </div>
+                <div class="talent-card animate-on-scroll" style="transition-delay: 0.2s">
+                    <div class="talent-header">Musicians</div>
+                    <div class="talent-body">
+                        <div class="talent-icon"><i class="fas fa-music"></i></div>
+                        <p>Sell your music, find performance opportunities, and connect with fans.</p>
+                    </div>
+                </div>
+                <div class="talent-card animate-on-scroll" style="transition-delay: 0.4s">
+                    <div class="talent-header">Artisans</div>
+                    <div class="talent-body">
+                        <div class="talent-icon"><i class="fas fa-hands"></i></div>
+                        <p>Market your handmade crafts, jewelry, and unique creations to local buyers.</p>
+                    </div>
+                </div>
+            </div>
+            
+            <a href="#" class="btn btn-primary animate-on-scroll" style="margin-top: 3rem;">Join Our Youth Program</a>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact">
+        <div class="container">
+            <h2 class="text-center animate-on-scroll">We'd Love to Hear from You!</h2>
+            <div class="contact-container">
+                <div class="contact-form animate-on-scroll">
+                    <form>
+                        <div class="form-group">
+                            <label for="name">Full Name</label>
+                            <input type="text" id="name" class="form-control" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Email Address</label>
+                            <input type="email" id="email" class="form-control" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="subject">Subject</label>
+                            <select id="subject" class="form-control" required>
+                                <option value="">Select a subject</option>
+                                <option value="vendor">Vendor Inquiry</option>
+                                <option value="customer">Customer Support</option>
+                                <option value="partnership">Partnership Opportunity</option>
+                                <option value="youth">Youth Empowerment Program</option>
+                                <option value="other">Other</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="message">Message</label>
+                            <textarea id="message" rows="5" class="form-control" required></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Send Message</button>
+                    </form>
+                </div>
+                <div class="contact-info animate-on-scroll" style="transition-delay: 0.2s">
+                    <div class="contact-details">
+                        <div class="contact-item">
+                            <div class="contact-icon"><i class="fas fa-envelope"></i></div>
+                            <div>
+                                <h3>Email</h3>
+                                <p>info@townssy.com</p>
+                            </div>
+                        </div>
+                        <div class="contact-item">
+                            <div class="contact-icon"><i class="fas fa-phone"></i></div>
+                            <div>
+                                <h3>Phone</h3>
+                                <p>0257785088</p>
+                            </div>
+                        </div>
+                        <div class="contact-item">
+                            <div class="contact-icon"><i class="fab fa-whatsapp"></i></div>
+                            <div>
+                                <h3>WhatsApp</h3>
+                                <p>+233 25 778 5088</p>
+                            </div>
+                        </div>
+                        <h3 style="margin-top: 2rem;">Connect With Us</h3>
+                        <div class="social-links">
+                            <a href="#" class="social-link"><i class="fab fa-facebook-f"></i></a>
+                            <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
+                            <a href="#" class="social-link"><i class="fab fa-whatsapp"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3>About Townssy</h3>
+                    <p>Empowering local commerce in Bolgatanga by connecting vendors with customers and supporting youth development.</p>
+                    <div class="social-links">
+                        <a href="#" class="social-link"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-whatsapp"></i></a>
+                    </div>
+                </div>
+                <div class="footer-column">
+                    <h3>Quick Links</h3>
+                    <ul class="footer-links">
+                        <li><a href="#hero">Home</a></li>
+                        <li><a href="#features">Features</a></li>
+                        <li><a href="#testimonials">Testimonials</a></li>
+                        <li><a href="#how-it-works">How It Works</a></li>
+                        <li><a href="#for-vendors">For Vendors</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Support</h3>
+                    <ul class="footer-links">
+                        <li><a href="#contact">Contact Us</a></li>
+                        <li><a href="#">FAQs</a></li>
+                        <li><a href="#">Vendor Resources</a></li>
+                        <li><a href="#">Delivery Information</a></li>
+                        <li><a href="#">Privacy Policy</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2023 Townssy. All Rights Reserved. Empowering Local Commerce in Bolgatanga.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.js"></script>
+    <script src="./scripts/script.js"></script>
+</body>
+</html>
