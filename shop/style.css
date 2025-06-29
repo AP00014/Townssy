@@ -1,5 +1,4 @@
-        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@600;700&family=Roboto:wght@400;500&display=swap');
-        :root {
+     :root {
             --primary: #2c7a57;
             --primary-dark: #1f5a40;
             --secondary: #f5a623;
@@ -83,7 +82,7 @@
             display: flex;
             align-items: center;
             justify-content: space-between;
-            padding: 15px 0;
+            
         }
         
         .logo {
@@ -124,13 +123,37 @@
             color: var(--primary-dark);
         }
         
+        .user-actions {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+        
         .user-actions a {
             color: var(--dark);
             text-decoration: none;
-            margin-left: 15px;
             display: inline-flex;
             align-items: center;
             gap: 5px;
+        }
+        
+        .filter-icon {
+            background: var(--primary);
+            color: white;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.3s;
+            box-shadow: var(--shadow);
+        }
+        
+        .filter-icon:hover {
+            background: var(--primary-dark);
+            transform: scale(1.05);
         }
         
         /* Banner Section */
@@ -221,98 +244,11 @@
         
         /* Main Content */
         .main-content {
-            display: flex;
-            gap: 30px;
             padding: 20px 0 50px;
-        }
-        
-        /* Filters Sidebar */
-        .filters-sidebar {
-            width: 280px;
-            flex-shrink: 0;
-            background: white;
-            border-radius: 8px;
-            padding: 20px;
-            box-shadow: var(--shadow);
-            height: fit-content;
-        }
-        
-        .filter-section {
-            margin-bottom: 25px;
-            padding-bottom: 20px;
-            border-bottom: 1px solid var(--border);
-        }
-        
-        .filter-section h3 {
-            font-size: 1.2rem;
-            margin-bottom: 15px;
-            color: var(--primary);
-        }
-        
-        .filter-options {
-            max-height: 200px;
-            overflow-y: auto;
-        }
-        
-        .filter-options label {
-            display: block;
-            margin-bottom: 10px;
-            cursor: pointer;
-            font-size: 0.95rem;
-            padding: 5px 10px;
-            border-radius: 4px;
-            transition: all 0.2s;
-        }
-        
-        .filter-options label:hover {
-            background: rgba(44, 122, 87, 0.05);
-        }
-        
-        .filter-options input {
-            margin-right: 10px;
-        }
-        
-        .price-range {
-            display: flex;
-            gap: 10px;
-            margin-top: 10px;
-        }
-        
-        .price-range input {
-            width: 100%;
-            padding: 8px 12px;
-            border: 1px solid var(--border);
-            border-radius: 4px;
-        }
-        
-        .filter-buttons {
-            display: flex;
-            gap: 10px;
-            margin-top: 10px;
-        }
-        
-        .filter-buttons button {
-            flex: 1;
-            padding: 10px;
-            border: none;
-            border-radius: 4px;
-            cursor: pointer;
-            font-weight: 500;
-        }
-        
-        .apply-btn {
-            background: var(--primary);
-            color: white;
-        }
-        
-        .reset-btn {
-            background: var(--light-gray);
-            color: var(--dark);
         }
         
         /* Products/Services Grid */
         .products-section, .services-section {
-            flex: 1;
             display: none;
         }
         
@@ -602,6 +538,132 @@
             font-size: 0.9rem;
         }
         
+        /* Filters Modal */
+        .filters-modal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.7);
+            display: none;
+            justify-content: center;
+            align-items: center;
+            z-index: 2000;
+        }
+        
+        .filters-container {
+            background: white;
+            width: 90%;
+            max-width: 500px;
+            border-radius: 10px;
+            padding: 30px;
+            max-height: 90vh;
+            overflow-y: auto;
+            position: relative;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+        }
+        
+        .modal-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+            padding-bottom: 15px;
+            border-bottom: 2px solid var(--light-gray);
+        }
+        
+        .modal-header h3 {
+            color: var(--primary);
+            margin: 0;
+        }
+        
+        .close-modal {
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: var(--gray);
+            transition: color 0.3s;
+        }
+        
+        .close-modal:hover {
+            color: var(--danger);
+        }
+        
+        .filter-section {
+            margin-bottom: 25px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid var(--border);
+        }
+        
+        .filter-section h4 {
+            font-size: 1.1rem;
+            margin-bottom: 15px;
+            color: var(--dark);
+        }
+        
+        .filter-options {
+            max-height: 200px;
+            overflow-y: auto;
+        }
+        
+        .filter-options label {
+            display: block;
+            margin-bottom: 10px;
+            cursor: pointer;
+            font-size: 0.95rem;
+            padding: 5px 10px;
+            border-radius: 4px;
+            transition: all 0.2s;
+        }
+        
+        .filter-options label:hover {
+            background: rgba(44, 122, 87, 0.05);
+        }
+        
+        .filter-options input {
+            margin-right: 10px;
+        }
+        
+        .price-range {
+            display: flex;
+            gap: 10px;
+            margin-top: 10px;
+        }
+        
+        .price-range input {
+            width: 100%;
+            padding: 8px 12px;
+            border: 1px solid var(--border);
+            border-radius: 4px;
+        }
+        
+        .filter-buttons {
+            display: flex;
+            gap: 10px;
+            margin-top: 10px;
+        }
+        
+        .filter-buttons button {
+            flex: 1;
+            padding: 10px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-weight: 500;
+        }
+        
+        .apply-btn {
+            background: var(--primary);
+            color: white;
+        }
+        
+        .reset-btn {
+            background: var(--light-gray);
+            color: var(--dark);
+        }
+        
         /* Responsive Design */
         @media (max-width: 1200px) {
             .products-grid, .services-grid {
@@ -610,14 +672,6 @@
         }
         
         @media (max-width: 992px) {
-            .main-content {
-                flex-direction: column;
-            }
-            
-            .filters-sidebar {
-                width: 100%;
-            }
-            
             .nav-tabs {
                 margin: 0 15px;
             }
@@ -630,7 +684,10 @@
             }
             
             .main-header {
-                flex-wrap: wrap;
+                flex-direction: row-reverse;
+                align-items: center;
+                
+                justify-content: space-between;
             }
             
             .logo {
@@ -686,5 +743,9 @@
                 padding: 12px 15px;
                 font-size: 1rem;
             }
+            
+            .filters-container {
+                width: 95%;
+                padding: 20px;
+            }
         }
-    

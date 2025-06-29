@@ -144,24 +144,177 @@
     </header>
 
     <!-- Hero Section -->
-    <section id="hero">
-        <div class="container">
-            <div class="hero-content">
-                <div class="hero-tagline animate-on-scroll">Empowering Local Commerce in Bolgatanga</div>
-                <h1 class="animate-on-scroll">Shop Local, <span style="color: var(--secondary);">Grow Together!</span></h1>
-                <p class="hero-text animate-on-scroll">Welcome to Townssy, your one-stop platform for affordable, high-quality products and services from local vendors. Empower youth, support small businesses, and enjoy doorstep delivery—all in Bolgatanga!</p>
-                <div class="hero-btns">
-                    <a href="#for-vendors" class="btn btn-primary animate-on-scroll">Join as a Vendor</a>
-                    <a href="#for-customers" class="btn btn-secondary animate-on-scroll">Shop Now</a>
+   
+        <!-- Hero Slider Section -->
+        <section id="hero-slider">
+            <div class="slider-container">
+                <!-- Slide 1: New Arrivals -->
+                <div class="slide active" id="slide1">
+                    <div class="slide-overlay"></div>
+                    <div class="slide-content">
+                        <div class="hero-tagline">Empowering Local Commerce</div>
+                        <h1>Discover Newest <span>Trends!</span></h1>
+                        <p>Explore the latest products from local vendors in Bolgatanga. Fresh arrivals every week with special discounts for early shoppers!</p>
+                        <div class="hero-btns">
+                            <a href="#new-arrivals" class="btn btn-primary">
+                                <i class="fas fa-shopping-cart"></i> Shop Now
+                            </a>
+                            <a href="#for-vendors" class="btn btn-outline">
+                                <i class="fas fa-store-alt"></i> Join as Vendor
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Slide 2: Hot Promotions -->
+                <div class="slide" id="slide2">
+                    <div class="slide-overlay"></div>
+                    <div class="slide-content">
+                        <div class="promo-badge">FLASH SALE: 50% OFF - LIMITED TIME!</div>
+                        <h1>Hot <span>Promotions</span></h1>
+                        <p>Don't miss these incredible discounts from local businesses. Limited stock available - grab them before they're gone!</p>
+                        
+                        <div class="countdown">
+                            <div class="countdown-item">
+                                <div class="countdown-number" id="days">00</div>
+                                <div class="countdown-label">Days</div>
+                            </div>
+                            <div class="countdown-item">
+                                <div class="countdown-number" id="hours">00</div>
+                                <div class="countdown-label">Hours</div>
+                            </div>
+                            <div class="countdown-item">
+                                <div class="countdown-number" id="minutes">00</div>
+                                <div class="countdown-label">Mins</div>
+                            </div>
+                            <div class="countdown-item">
+                                <div class="countdown-number" id="seconds">00</div>
+                                <div class="countdown-label">Secs</div>
+                            </div>
+                        </div>
+                        
+                        <div class="hero-btns">
+                            <a href="#promotions" class="btn btn-danger">
+                                <i class="fas fa-bolt"></i> View All Promotions
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Slide 3: Best Price Products -->
+                <div class="slide" id="slide3">
+                    <div class="slide-overlay"></div>
+                    <div class="slide-content">
+                        <h1>Unbeatable <span>Prices</span></h1>
+                        <p>Quality products at the best prices in Bolgatanga. Support local businesses while saving money!</p>
+                        
+                        <div class="product-grid">
+                            <div class="product-item">
+                                <img src="https://cdn-icons-png.flaticon.com/512/3081/3081983.png" alt="Handmade Basket">
+                                <div class="product-name">Handmade Basket</div>
+                                <div class="product-price">₵45.00</div>
+                            </div>
+                            <div class="product-item">
+                                <img src="https://cdn-icons-png.flaticon.com/512/2437/2437808.png" alt="Local Spices">
+                                <div class="product-name">Local Spices</div>
+                                <div class="product-price">₵12.50</div>
+                            </div>
+                            <div class="product-item">
+                                <img src="https://cdn-icons-png.flaticon.com/512/3081/3081520.png" alt="African Print">
+                                <div class="product-name">African Print</div>
+                                <div class="product-price">₵85.00</div>
+                            </div>
+                            <div class="product-item">
+                                <img src="https://cdn-icons-png.flaticon.com/512/3081/3081961.png" alt="Shea Butter">
+                                <div class="product-name">Shea Butter</div>
+                                <div class="product-price">₵25.00</div>
+                            </div>
+                        </div>
+                        
+                        <div class="hero-btns">
+                            <a href="#best-deals" class="btn btn-primary">
+                                <i class="fas fa-tags"></i> View All Deals
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Slide 4: Featured Services -->
+                <div class="slide" id="slide4">
+                    <div class="slide-overlay"></div>
+                    <div class="slide-content">
+                        <h1>Professional <span>Services</span></h1>
+                        <p>Discover skilled local professionals ready to help with your projects. Quality services at competitive prices.</p>
+                        
+                        <div class="services-grid">
+                            <div class="service-item">
+                                <div class="service-icon">
+                                    <i class="fas fa-laptop-code"></i>
+                                </div>
+                                <h3>Web Development</h3>
+                                <p>Custom websites for your business</p>
+                            </div>
+                            <div class="service-item">
+                                <div class="service-icon">
+                                    <i class="fas fa-paint-brush"></i>
+                                </div>
+                                <h3>Graphic Design</h3>
+                                <p>Logos, flyers & branding</p>
+                            </div>
+                            <div class="service-item">
+                                <div class="service-icon">
+                                    <i class="fas fa-chart-line"></i>
+                                </div>
+                                <h3>Digital Marketing</h3>
+                                <p>Grow your online presence</p>
+                            </div>
+                        </div>
+                        
+                        <div class="hero-btns">
+                            <a href="#services" class="btn btn-secondary">
+                                <i class="fas fa-cogs"></i> Explore Services
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Slide 5: Seasonal Offer -->
+                <div class="slide" id="slide5">
+                    <div class="slide-overlay"></div>
+                    <div class="slide-content">
+                        <div class="hero-tagline">Seasonal Special</div>
+                        <h1>Summer <span>Sale!</span></h1>
+                        <p>Buy 2 items, get 1 free on selected products. Use promo code at checkout: <strong>TOWNSSYSUMMER</strong></p>
+                        <div class="hero-btns">
+                            <a href="#seasonal-offers" class="btn btn-secondary">
+                                <i class="fas fa-gift"></i> Grab the Deal
+                            </a>
+                            <a href="#how-it-works" class="btn btn-outline">
+                                <i class="fas fa-info-circle"></i> Learn More
+                            </a>
+                        </div>
+                    </div>
                 </div>
             </div>
-        </div>
-        <div class="hero-bg-shapes">
-            <div class="shape shape-1"></div>
-            <div class="shape shape-2"></div>
-        </div>
-    </section>
 
+            <!-- Navigation Arrows -->
+            <div class="slider-arrow prev">
+                <i class="fas fa-chevron-left"></i>
+            </div>
+            <div class="slider-arrow next">
+                <i class="fas fa-chevron-right"></i>
+            </div>
+
+            <!-- Navigation Dots -->
+            <div class="slider-controls">
+                <div class="slider-dot active" data-slide="0"></div>
+                <div class="slider-dot" data-slide="1"></div>
+                <div class="slider-dot" data-slide="2"></div>
+                <div class="slider-dot" data-slide="3"></div>
+                <div class="slider-dot" data-slide="4"></div>
+            </div>
+        </section>
+   
     <!-- Features Section -->
     <section id="features">
         <div class="container text-center">
@@ -275,7 +428,7 @@
                         <li>Youth Creations (art, music, crafts)</li>
                         <li>Local Services & Experiences</li>
                     </ul>
-                    <a href="./shop/shop.html" class="btn btn-secondary">Start Shopping Now</a>
+                    <a href="./shop/" class="btn btn-secondary">Start Shopping Now</a>
                 </div>
                 <div class="split-image">
                     <div class="icon-container"><i class="fas fa-shopping-bag"></i></div>

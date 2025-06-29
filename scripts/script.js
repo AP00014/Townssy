@@ -184,3 +184,107 @@
     }
   });
 });
+
+
+
+
+ document.addEventListener('DOMContentLoaded', function() {
+            const slides = document.querySelectorAll('.slide');
+            const dots = document.querySelectorAll('.slider-dot');
+            const prevBtn = document.querySelector('.prev');
+            const nextBtn = document.querySelector('.next');
+            let currentSlide = 0;
+            let slideInterval;
+
+            // Initialize slider
+            function initSlider() {
+                if (slides.length === 0) return;
+                
+                // Show first slide
+                slides[currentSlide].classList.add('active');
+                dots[currentSlide].classList.add('active');
+                
+                // Start autoplay
+                startSlideInterval();
+            }
+
+            // Go to specific slide
+            function goToSlide(n) {
+                slides[currentSlide].classList.remove('active');
+                dots[currentSlide].classList.remove('active');
+                
+                currentSlide = (n + slides.length) % slides.length;
+                
+                slides[currentSlide].classList.add('active');
+                dots[currentSlide].classList.add('active');
+            }
+
+            // Next slide
+            function nextSlide() {
+                goToSlide(currentSlide + 1);
+            }
+
+            // Previous slide
+            function prevSlide() {
+                goToSlide(currentSlide - 1);
+            }
+
+            // Start autoplay
+            function startSlideInterval() {
+                clearInterval(slideInterval);
+                slideInterval = setInterval(nextSlide, 5000);
+            }
+
+            // Pause autoplay when hovering
+            document.getElementById('hero-slider').addEventListener('mouseenter', () => {
+                clearInterval(slideInterval);
+            });
+
+            // Resume autoplay when not hovering
+            document.getElementById('hero-slider').addEventListener('mouseleave', startSlideInterval);
+
+            // Event listeners
+            nextBtn.addEventListener('click', () => {
+                nextSlide();
+                startSlideInterval();
+            });
+
+            prevBtn.addEventListener('click', () => {
+                prevSlide();
+                startSlideInterval();
+            });
+
+            dots.forEach(dot => {
+                dot.addEventListener('click', function() {
+                    const slideIndex = parseInt(this.getAttribute('data-slide'));
+                    goToSlide(slideIndex);
+                    startSlideInterval();
+                });
+            });
+
+            // Countdown timer for Slide 2
+            function updateCountdown() {
+                const now = new Date();
+                const endOfDay = new Date();
+                endOfDay.setHours(23, 59, 59, 999);
+                
+                const diff = endOfDay - now;
+                
+                const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+                const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+                const seconds = Math.floor((diff % (1000 * 60)) / 1000);
+                
+                document.getElementById('days').textContent = days.toString().padStart(2, '0');
+                document.getElementById('hours').textContent = hours.toString().padStart(2, '0');
+                document.getElementById('minutes').textContent = minutes.toString().padStart(2, '0');
+                document.getElementById('seconds').textContent = seconds.toString().padStart(2, '0');
+            }
+
+            // Update countdown every second
+            setInterval(updateCountdown, 1000);
+            updateCountdown();
+
+            // Initialize slider
+            initSlider();
+        });

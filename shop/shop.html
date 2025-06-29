@@ -1,15 +1,4 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Townssy Marketplace - Products & Services</title>
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&family=Poppins:wght@600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link rel="stylesheet" href="./style.css">
-</head>
-<body>
-    <!-- Header Section -->
+ <!-- Header Section -->
     <header>
         <div class="top-header">
             <div class="container top-header-container">
@@ -27,14 +16,19 @@
         
         <div class="container">
             <div class="main-header">
-                <a href="#" class="logo"><i class="fas fa-store"></i> Townssy</a>
+               
                 
                 <div class="nav-tabs">
                     <div class="nav-tab active" data-tab="products">Products</div>
                     <div class="nav-tab" data-tab="services">Services</div>
                 </div>
                 
-                
+                <div class="user-actions">
+                   
+                    <div class="filter-icon" id="open-filters">
+                        <i class="fas fa-filter"></i>
+                    </div>
+                </div>
             </div>
         </div>
     </header>
@@ -67,42 +61,6 @@
         
         <!-- Main Content -->
         <div class="main-content">
-            <!-- Filters Sidebar -->
-            <aside class="filters-sidebar">
-                <div class="filter-section">
-                    <h3>Categories</h3>
-                    <div class="filter-options" id="category-filter">
-                        <!-- Will be populated by JavaScript -->
-                    </div>
-                </div>
-                
-                <div class="filter-section">
-                    <h3>Price Range</h3>
-                    <div class="price-range">
-                        <input type="number" id="min-price" placeholder="Min" min="0">
-                        <input type="number" id="max-price" placeholder="Max" min="0">
-                    </div>
-                    <div class="filter-buttons">
-                        <button class="apply-btn" id="apply-price">Apply</button>
-                        <button class="reset-btn" id="reset-price">Reset</button>
-                    </div>
-                </div>
-                
-                <div class="filter-section">
-                    <h3>Location</h3>
-                    <div class="filter-options" id="location-filter">
-                        <!-- Will be populated by JavaScript -->
-                    </div>
-                </div>
-                
-                <div class="filter-section">
-                    <h3>Supplier Type</h3>
-                    <div class="filter-options" id="type-filter">
-                        <!-- Will be populated by JavaScript -->
-                    </div>
-                </div>
-            </aside>
-            
             <!-- Products Section -->
             <section class="products-section active-section" id="products-section">
                 <div class="section-header">
@@ -118,7 +76,103 @@
                 </div>
                 
                 <div class="products-grid" id="products-container">
-                    <!-- Products will be populated by JavaScript -->
+                    <div class="product-card">
+                        <div class="product-badge">New</div>
+                        <div class="product-image">
+                            <img src="https://images.unsplash.com/photo-1600003263720-95b45a4035d5?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=500&q=80" alt="Handmade Basket">
+                        </div>
+                        <div class="product-info">
+                            <h3 class="product-title">Handmade African Basket</h3>
+                            <ul class="product-specs">
+                                <li><i class="fas fa-check-circle"></i> Made from natural materials</li>
+                                <li><i class="fas fa-check-circle"></i> Durable and eco-friendly</li>
+                                <li><i class="fas fa-check-circle"></i> Perfect for home decor</li>
+                            </ul>
+                            <div class="product-price">₵45.00</div>
+                            <div class="product-meta">
+                                <span><i class="fas fa-map-marker-alt"></i> Bolgatanga</span>
+                                <span><i class="fas fa-clock"></i> 2 days ago</span>
+                            </div>
+                            <div class="product-supplier">
+                                <div class="supplier-logo">AB</div>
+                                <div class="supplier-name">Ama Basket Weavers <i class="fas fa-check-circle verified-badge"></i></div>
+                            </div>
+                            <a href="#" class="contact-btn">Contact Supplier</a>
+                        </div>
+                    </div>
+                    
+                    <div class="product-card">
+                        <div class="product-image">
+                            <img src="https://images.unsplash.com/photo-1588568294695-3311b1c1a5a8?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=500&q=80" alt="Shea Butter">
+                        </div>
+                        <div class="product-info">
+                            <h3 class="product-title">Organic Shea Butter</h3>
+                            <ul class="product-specs">
+                                <li><i class="fas fa-check-circle"></i> 100% natural and organic</li>
+                                <li><i class="fas fa-check-circle"></i> Great for skin and hair</li>
+                                <li><i class="fas fa-check-circle"></i> Produced locally</li>
+                            </ul>
+                            <div class="product-price">₵25.00</div>
+                            <div class="product-meta">
+                                <span><i class="fas fa-map-marker-alt"></i> Tamale</span>
+                                <span><i class="fas fa-clock"></i> 1 week ago</span>
+                            </div>
+                            <div class="product-supplier">
+                                <div class="supplier-logo">SB</div>
+                                <div class="supplier-name">Shea Beauty <i class="fas fa-check-circle verified-badge"></i></div>
+                            </div>
+                            <a href="#" class="contact-btn">Contact Supplier</a>
+                        </div>
+                    </div>
+                    
+                    <div class="product-card">
+                        <div class="product-badge">Popular</div>
+                        <div class="product-image">
+                            <img src="https://images.unsplash.com/photo-1556906781-9a412961c28c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=500&q=80" alt="African Print">
+                        </div>
+                        <div class="product-info">
+                            <h3 class="product-title">Authentic African Print Fabric</h3>
+                            <ul class="product-specs">
+                                <li><i class="fas fa-check-circle"></i> Premium quality cotton</li>
+                                <li><i class="fas fa-check-circle"></i> Vibrant colors and patterns</li>
+                                <li><i class="fas fa-check-circle"></i> 6 yards per piece</li>
+                            </ul>
+                            <div class="product-price">₵85.00</div>
+                            <div class="product-meta">
+                                <span><i class="fas fa-map-marker-alt"></i> Kumasi</span>
+                                <span><i class="fas fa-clock"></i> 3 days ago</span>
+                            </div>
+                            <div class="product-supplier">
+                                <div class="supplier-logo">AP</div>
+                                <div class="supplier-name">African Prints Co.</div>
+                            </div>
+                            <a href="#" class="contact-btn">Contact Supplier</a>
+                        </div>
+                    </div>
+                    
+                    <div class="product-card">
+                        <div class="product-image">
+                            <img src="https://images.unsplash.com/photo-1583947581924-860bda6a26df?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=500&q=80" alt="Wooden Sculpture">
+                        </div>
+                        <div class="product-info">
+                            <h3 class="product-title">Hand-carved Wooden Sculpture</h3>
+                            <ul class="product-specs">
+                                <li><i class="fas fa-check-circle"></i> Made from sustainable wood</li>
+                                <li><i class="fas fa-check-circle"></i> Traditional craftsmanship</li>
+                                <li><i class="fas fa-check-circle"></i> Unique design</li>
+                            </ul>
+                            <div class="product-price">₵120.00</div>
+                            <div class="product-meta">
+                                <span><i class="fas fa-map-marker-alt"></i> Accra</span>
+                                <span><i class="fas fa-clock"></i> 5 days ago</span>
+                            </div>
+                            <div class="product-supplier">
+                                <div class="supplier-logo">WS</div>
+                                <div class="supplier-name">Woodcraft Studio</div>
+                            </div>
+                            <a href="#" class="contact-btn">Contact Supplier</a>
+                        </div>
+                    </div>
                 </div>
             </section>
             
@@ -137,22 +191,224 @@
                 </div>
                 
                 <div class="service-categories" id="service-categories">
-                    <!-- Service categories will be populated by JavaScript -->
+                    <div class="category-card">
+                        <div class="category-icon">
+                            <i class="fas fa-laptop-code"></i>
+                        </div>
+                        <div class="category-name">Web Development</div>
+                    </div>
+                    <div class="category-card active">
+                        <div class="category-icon">
+                            <i class="fas fa-paint-brush"></i>
+                        </div>
+                        <div class="category-name">Graphic Design</div>
+                    </div>
+                    <div class="category-card">
+                        <div class="category-icon">
+                            <i class="fas fa-bullhorn"></i>
+                        </div>
+                        <div class="category-name">Digital Marketing</div>
+                    </div>
+                    <div class="category-card">
+                        <div class="category-icon">
+                            <i class="fas fa-camera"></i>
+                        </div>
+                        <div class="category-name">Photography</div>
+                    </div>
                 </div>
                 
                 <div class="services-grid" id="services-container">
-                    <!-- Services will be populated by JavaScript -->
+                    <div class="service-card">
+                        <div class="service-image">
+                            <img src="https://images.unsplash.com/photo-1545235617-9465d2a55698?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=500&q=80" alt="Logo Design">
+                        </div>
+                        <div class="service-info">
+                            <h3 class="service-title">Professional Logo Design</h3>
+                            <ul class="service-description">
+                                <li><i class="fas fa-check-circle"></i> Unique and memorable logo</li>
+                                <li><i class="fas fa-check-circle"></i> Multiple concepts to choose from</li>
+                                <li><i class="fas fa-check-circle"></i> All file formats included</li>
+                            </ul>
+                            <div class="service-price">Starting at ₵250.00</div>
+                            <div class="service-delivery">
+                                <span><i class="fas fa-clock"></i> 3-5 days delivery</span>
+                                <div class="service-rating">
+                                    <i class="fas fa-star"></i> 4.9 (28 reviews)
+                                </div>
+                            </div>
+                            <div class="service-provider">
+                                <div class="provider-logo">CD</div>
+                                <div class="provider-name">Creative Designs GH <i class="fas fa-check-circle verified-badge"></i></div>
+                            </div>
+                            <a href="#" class="contact-btn">Contact Provider</a>
+                        </div>
+                    </div>
+                    
+                    <div class="service-card">
+                        <div class="service-badge">Popular</div>
+                        <div class="service-image">
+                            <img src="https://images.unsplash.com/photo-1499951360447-b19be8fe80f5?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=500&q=80" alt="Website Development">
+                        </div>
+                        <div class="service-info">
+                            <h3 class="service-title">Business Website Development</h3>
+                            <ul class="service-description">
+                                <li><i class="fas fa-check-circle"></i> Responsive design</li>
+                                <li><i class="fas fa-check-circle"></i> CMS integration</li>
+                                <li><i class="fas fa-check-circle"></i> SEO optimized</li>
+                            </ul>
+                            <div class="service-price">Starting at ₵1,200.00</div>
+                            <div class="service-delivery">
+                                <span><i class="fas fa-clock"></i> 7-14 days delivery</span>
+                                <div class="service-rating">
+                                    <i class="fas fa-star"></i> 4.8 (42 reviews)
+                                </div>
+                            </div>
+                            <div class="service-provider">
+                                <div class="provider-logo">WD</div>
+                                <div class="provider-name">Web Developers Inc <i class="fas fa-check-circle verified-badge"></i></div>
+                            </div>
+                            <a href="#" class="contact-btn">Contact Provider</a>
+                        </div>
+                    </div>
+                    
+                    <div class="service-card">
+                        <div class="service-image">
+                            <img src="https://images.unsplash.com/photo-1611162617213-7d7a39e9b1d7?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=500&q=80" alt="Social Media">
+                        </div>
+                        <div class="service-info">
+                            <h3 class="service-title">Social Media Management</h3>
+                            <ul class="service-description">
+                                <li><i class="fas fa-check-circle"></i> Content creation & scheduling</li>
+                                <li><i class="fas fa-check-circle"></i> Engagement strategy</li>
+                                <li><i class="fas fa-check-circle"></i> Monthly performance reports</li>
+                            </ul>
+                            <div class="service-price">Starting at ₵500/month</div>
+                            <div class="service-delivery">
+                                <span><i class="fas fa-clock"></i> Ongoing service</span>
+                                <div class="service-rating">
+                                    <i class="fas fa-star"></i> 4.7 (35 reviews)
+                                </div>
+                            </div>
+                            <div class="service-provider">
+                                <div class="provider-logo">SM</div>
+                                <div class="provider-name">Social Media Pros</div>
+                            </div>
+                            <a href="#" class="contact-btn">Contact Provider</a>
+                        </div>
+                    </div>
+                    
+                    <div class="service-card">
+                        <div class="service-image">
+                            <img src="https://images.unsplash.com/photo-1470225620780-dba8ba36b745?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=500&q=80" alt="Photography">
+                        </div>
+                        <div class="service-info">
+                            <h3 class="service-title">Professional Product Photography</h3>
+                            <ul class="service-description">
+                                <li><i class="fas fa-check-circle"></i> High-quality product images</li>
+                                <li><i class="fas fa-check-circle"></i> Studio lighting setup</li>
+                                <li><i class="fas fa-check-circle"></i> Background removal included</li>
+                            </ul>
+                            <div class="service-price">Starting at ₵150/session</div>
+                            <div class="service-delivery">
+                                <span><i class="fas fa-clock"></i> 2-3 days delivery</span>
+                                <div class="service-rating">
+                                    <i class="fas fa-star"></i> 4.9 (19 reviews)
+                                </div>
+                            </div>
+                            <div class="service-provider">
+                                <div class="provider-logo">PP</div>
+                                <div class="provider-name">Pro Photography Studio</div>
+                            </div>
+                            <a href="#" class="contact-btn">Contact Provider</a>
+                        </div>
+                    </div>
                 </div>
             </section>
         </div>
-        
-        <!-- Featured Suppliers -->
-        <section class="additional-section">
-            <h2>Trusted Providers</h2>
-            <div class="supplier-cards">
-                <!-- Will be populated by JavaScript -->
+    </div>
+    
+    <!-- Filters Modal -->
+    <div class="filters-modal" id="filters-modal">
+        <div class="filters-container">
+            <div class="modal-header">
+                <h3>Filter Options</h3>
+                <button class="close-modal" id="close-filters">&times;</button>
             </div>
-        </section>
+            
+            <div class="filter-section">
+                <h4>Categories</h4>
+                <div class="filter-options" id="category-filter">
+                    <label>
+                        <input type="checkbox" name="category" value="electronics"> Electronics
+                    </label>
+                    <label>
+                        <input type="checkbox" name="category" value="fashion"> Fashion & Apparel
+                    </label>
+                    <label>
+                        <input type="checkbox" name="category" value="home"> Home & Garden
+                    </label>
+                    <label>
+                        <input type="checkbox" name="category" value="beauty"> Beauty & Personal Care
+                    </label>
+                    <label>
+                        <input type="checkbox" name="category" value="crafts"> Handicrafts
+                    </label>
+                </div>
+            </div>
+            
+            <div class="filter-section">
+                <h4>Price Range (₵)</h4>
+                <div class="price-range">
+                    <input type="number" id="min-price" placeholder="Min" min="0">
+                    <input type="number" id="max-price" placeholder="Max" min="0">
+                </div>
+                <div class="filter-buttons">
+                    <button class="apply-btn" id="apply-price">Apply Price</button>
+                    <button class="reset-btn" id="reset-price">Reset</button>
+                </div>
+            </div>
+            
+            <div class="filter-section">
+                <h4>Location</h4>
+                <div class="filter-options" id="location-filter">
+                    <label>
+                        <input type="checkbox" name="location" value="accra"> Accra
+                    </label>
+                    <label>
+                        <input type="checkbox" name="location" value="kumasi"> Kumasi
+                    </label>
+                    <label>
+                        <input type="checkbox" name="location" value="tamale"> Tamale
+                    </label>
+                    <label>
+                        <input type="checkbox" name="location" value="bolga"> Bolgatanga
+                    </label>
+                    <label>
+                        <input type="checkbox" name="location" value="cape"> Cape Coast
+                    </label>
+                </div>
+            </div>
+            
+            <div class="filter-section">
+                <h4>Supplier Type</h4>
+                <div class="filter-options" id="type-filter">
+                    <label>
+                        <input type="checkbox" name="type" value="verified"> Verified Only
+                    </label>
+                    <label>
+                        <input type="checkbox" name="type" value="premium"> Premium Suppliers
+                    </label>
+                    <label>
+                        <input type="checkbox" name="type" value="local"> Local Artisans
+                    </label>
+                </div>
+            </div>
+            
+            <div class="filter-buttons" style="margin-top: 20px;">
+                <button class="apply-btn" style="flex: 2;">Apply Filters</button>
+                <button class="reset-btn">Reset All</button>
+            </div>
+        </div>
     </div>
     
     <!-- Footer -->
@@ -208,7 +464,581 @@
             </div>
         </div>
     </footer>
+    <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Townssy Marketplace - Products & Services</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600;700&family=Roboto:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+    <!-- Header Section -->
+    <header>
+        <div class="top-header">
+            <div class="container top-header-container">
+                <div class="contact-links">
+                    <a href="tel:+233257785088"><i class="fas fa-phone"></i> +233 25 778 5088</a>
+                    <a href="mailto:info@townssy.com"><i class="fas fa-envelope"></i> info@townssy.com</a>
+                </div>
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-whatsapp"></i></a>
+                </div>
+            </div>
+        </div>
+        
+        <div class="container">
+            <div class="main-header">
+                <a href="#" class="logo">
+                    <i class="fas fa-store"></i>
+                    Townssy
+                </a>
+                
+                <div class="nav-tabs">
+                    <div class="nav-tab active" data-tab="products">Products</div>
+                    <div class="nav-tab" data-tab="services">Services</div>
+                </div>
+                
+                <div class="user-actions">
+                    <a href="#"><i class="fas fa-user"></i></a>
+                    <a href="#"><i class="fas fa-shopping-cart"></i></a>
+                    <div class="filter-icon" id="open-filters">
+                        <i class="fas fa-filter"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
     
-  <script src="./script.js"></script>
-</body>
+    <!-- Banner Section -->
+    <section class="banner-section">
+        <div class="container">
+            <div class="banner-content">
+                <h1>Your Marketplace for Products & Services</h1>
+                <p>Find quality products from trusted suppliers or hire skilled professionals for your projects</p>
+                
+                <div class="banner-buttons">
+                    <a href="https://wa.me/233257785088?text=Hello%20Townssy%20consultant,%20I%20need%20assistance" class="btn btn-primary">
+                        <i class="fab fa-whatsapp"></i> Chat with Consultant
+                    </a>
+                    <a href="#" class="btn btn-secondary">
+                        <i class="fas fa-users"></i> Join Our Community
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <div class="container">
+        <!-- Notice Banner -->
+        <div class="notice-banner">
+            <i class="fas fa-exclamation-circle"></i>
+            Note: All transactions occur directly between buyers and sellers. No payments are processed on this platform.
+        </div>
+        
+        <!-- Main Content -->
+        <div class="main-content">
+            <!-- Products Section -->
+            <section class="products-section active-section" id="products-section">
+                <div class="section-header">
+                    <h2>Featured Products</h2>
+                    <div class="sort-options">
+                        <select id="product-sort">
+                            <option value="featured">Sort by: Featured</option>
+                            <option value="price-low">Price: Low to High</option>
+                            <option value="price-high">Price: High to Low</option>
+                            <option value="newest">Newest First</option>
+                        </select>
+                    </div>
+                </div>
+                
+                <div class="products-grid" id="products-container">
+                    <div class="product-card">
+                        <div class="product-badge">New</div>
+                        <div class="product-image">
+                            <img src="https://images.unsplash.com/photo-1600003263720-95b45a4035d5?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=500&q=80" alt="Handmade Basket">
+                        </div>
+                        <div class="product-info">
+                            <h3 class="product-title">Handmade African Basket</h3>
+                            <ul class="product-specs">
+                                <li><i class="fas fa-check-circle"></i> Made from natural materials</li>
+                                <li><i class="fas fa-check-circle"></i> Durable and eco-friendly</li>
+                                <li><i class="fas fa-check-circle"></i> Perfect for home decor</li>
+                            </ul>
+                            <div class="product-price">₵45.00</div>
+                            <div class="product-meta">
+                                <span><i class="fas fa-map-marker-alt"></i> Bolgatanga</span>
+                                <span><i class="fas fa-clock"></i> 2 days ago</span>
+                            </div>
+                            <div class="product-supplier">
+                                <div class="supplier-logo">AB</div>
+                                <div class="supplier-name">Ama Basket Weavers <i class="fas fa-check-circle verified-badge"></i></div>
+                            </div>
+                            <a href="#" class="contact-btn">Contact Supplier</a>
+                        </div>
+                    </div>
+                    
+                    <div class="product-card">
+                        <div class="product-image">
+                            <img src="https://images.unsplash.com/photo-1588568294695-3311b1c1a5a8?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=500&q=80" alt="Shea Butter">
+                        </div>
+                        <div class="product-info">
+                            <h3 class="product-title">Organic Shea Butter</h3>
+                            <ul class="product-specs">
+                                <li><i class="fas fa-check-circle"></i> 100% natural and organic</li>
+                                <li><i class="fas fa-check-circle"></i> Great for skin and hair</li>
+                                <li><i class="fas fa-check-circle"></i> Produced locally</li>
+                            </ul>
+                            <div class="product-price">₵25.00</div>
+                            <div class="product-meta">
+                                <span><i class="fas fa-map-marker-alt"></i> Tamale</span>
+                                <span><i class="fas fa-clock"></i> 1 week ago</span>
+                            </div>
+                            <div class="product-supplier">
+                                <div class="supplier-logo">SB</div>
+                                <div class="supplier-name">Shea Beauty <i class="fas fa-check-circle verified-badge"></i></div>
+                            </div>
+                            <a href="#" class="contact-btn">Contact Supplier</a>
+                        </div>
+                    </div>
+                    
+                    <div class="product-card">
+                        <div class="product-badge">Popular</div>
+                        <div class="product-image">
+                            <img src="https://images.unsplash.com/photo-1556906781-9a412961c28c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=500&q=80" alt="African Print">
+                        </div>
+                        <div class="product-info">
+                            <h3 class="product-title">Authentic African Print Fabric</h3>
+                            <ul class="product-specs">
+                                <li><i class="fas fa-check-circle"></i> Premium quality cotton</li>
+                                <li><i class="fas fa-check-circle"></i> Vibrant colors and patterns</li>
+                                <li><i class="fas fa-check-circle"></i> 6 yards per piece</li>
+                            </ul>
+                            <div class="product-price">₵85.00</div>
+                            <div class="product-meta">
+                                <span><i class="fas fa-map-marker-alt"></i> Kumasi</span>
+                                <span><i class="fas fa-clock"></i> 3 days ago</span>
+                            </div>
+                            <div class="product-supplier">
+                                <div class="supplier-logo">AP</div>
+                                <div class="supplier-name">African Prints Co.</div>
+                            </div>
+                            <a href="#" class="contact-btn">Contact Supplier</a>
+                        </div>
+                    </div>
+                    
+                    <div class="product-card">
+                        <div class="product-image">
+                            <img src="https://images.unsplash.com/photo-1583947581924-860bda6a26df?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=500&q=80" alt="Wooden Sculpture">
+                        </div>
+                        <div class="product-info">
+                            <h3 class="product-title">Hand-carved Wooden Sculpture</h3>
+                            <ul class="product-specs">
+                                <li><i class="fas fa-check-circle"></i> Made from sustainable wood</li>
+                                <li><i class="fas fa-check-circle"></i> Traditional craftsmanship</li>
+                                <li><i class="fas fa-check-circle"></i> Unique design</li>
+                            </ul>
+                            <div class="product-price">₵120.00</div>
+                            <div class="product-meta">
+                                <span><i class="fas fa-map-marker-alt"></i> Accra</span>
+                                <span><i class="fas fa-clock"></i> 5 days ago</span>
+                            </div>
+                            <div class="product-supplier">
+                                <div class="supplier-logo">WS</div>
+                                <div class="supplier-name">Woodcraft Studio</div>
+                            </div>
+                            <a href="#" class="contact-btn">Contact Supplier</a>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            
+            <!-- Services Section -->
+            <section class="services-section" id="services-section">
+                <div class="section-header">
+                    <h2>Professional Services</h2>
+                    <div class="sort-options">
+                        <select id="service-sort">
+                            <option value="featured">Sort by: Featured</option>
+                            <option value="price-low">Price: Low to High</option>
+                            <option value="price-high">Price: High to Low</option>
+                            <option value="rating">Highest Rated</option>
+                        </select>
+                    </div>
+                </div>
+                
+                <div class="service-categories" id="service-categories">
+                    <div class="category-card">
+                        <div class="category-icon">
+                            <i class="fas fa-laptop-code"></i>
+                        </div>
+                        <div class="category-name">Web Development</div>
+                    </div>
+                    <div class="category-card active">
+                        <div class="category-icon">
+                            <i class="fas fa-paint-brush"></i>
+                        </div>
+                        <div class="category-name">Graphic Design</div>
+                    </div>
+                    <div class="category-card">
+                        <div class="category-icon">
+                            <i class="fas fa-bullhorn"></i>
+                        </div>
+                        <div class="category-name">Digital Marketing</div>
+                    </div>
+                    <div class="category-card">
+                        <div class="category-icon">
+                            <i class="fas fa-camera"></i>
+                        </div>
+                        <div class="category-name">Photography</div>
+                    </div>
+                </div>
+                
+                <div class="services-grid" id="services-container">
+                    <div class="service-card">
+                        <div class="service-image">
+                            <img src="https://images.unsplash.com/photo-1545235617-9465d2a55698?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=500&q=80" alt="Logo Design">
+                        </div>
+                        <div class="service-info">
+                            <h3 class="service-title">Professional Logo Design</h3>
+                            <ul class="service-description">
+                                <li><i class="fas fa-check-circle"></i> Unique and memorable logo</li>
+                                <li><i class="fas fa-check-circle"></i> Multiple concepts to choose from</li>
+                                <li><i class="fas fa-check-circle"></i> All file formats included</li>
+                            </ul>
+                            <div class="service-price">Starting at ₵250.00</div>
+                            <div class="service-delivery">
+                                <span><i class="fas fa-clock"></i> 3-5 days delivery</span>
+                                <div class="service-rating">
+                                    <i class="fas fa-star"></i> 4.9 (28 reviews)
+                                </div>
+                            </div>
+                            <div class="service-provider">
+                                <div class="provider-logo">CD</div>
+                                <div class="provider-name">Creative Designs GH <i class="fas fa-check-circle verified-badge"></i></div>
+                            </div>
+                            <a href="#" class="contact-btn">Contact Provider</a>
+                        </div>
+                    </div>
+                    
+                    <div class="service-card">
+                        <div class="service-badge">Popular</div>
+                        <div class="service-image">
+                            <img src="https://images.unsplash.com/photo-1499951360447-b19be8fe80f5?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=500&q=80" alt="Website Development">
+                        </div>
+                        <div class="service-info">
+                            <h3 class="service-title">Business Website Development</h3>
+                            <ul class="service-description">
+                                <li><i class="fas fa-check-circle"></i> Responsive design</li>
+                                <li><i class="fas fa-check-circle"></i> CMS integration</li>
+                                <li><i class="fas fa-check-circle"></i> SEO optimized</li>
+                            </ul>
+                            <div class="service-price">Starting at ₵1,200.00</div>
+                            <div class="service-delivery">
+                                <span><i class="fas fa-clock"></i> 7-14 days delivery</span>
+                                <div class="service-rating">
+                                    <i class="fas fa-star"></i> 4.8 (42 reviews)
+                                </div>
+                            </div>
+                            <div class="service-provider">
+                                <div class="provider-logo">WD</div>
+                                <div class="provider-name">Web Developers Inc <i class="fas fa-check-circle verified-badge"></i></div>
+                            </div>
+                            <a href="#" class="contact-btn">Contact Provider</a>
+                        </div>
+                    </div>
+                    
+                    <div class="service-card">
+                        <div class="service-image">
+                            <img src="https://images.unsplash.com/photo-1611162617213-7d7a39e9b1d7?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=500&q=80" alt="Social Media">
+                        </div>
+                        <div class="service-info">
+                            <h3 class="service-title">Social Media Management</h3>
+                            <ul class="service-description">
+                                <li><i class="fas fa-check-circle"></i> Content creation & scheduling</li>
+                                <li><i class="fas fa-check-circle"></i> Engagement strategy</li>
+                                <li><i class="fas fa-check-circle"></i> Monthly performance reports</li>
+                            </ul>
+                            <div class="service-price">Starting at ₵500/month</div>
+                            <div class="service-delivery">
+                                <span><i class="fas fa-clock"></i> Ongoing service</span>
+                                <div class="service-rating">
+                                    <i class="fas fa-star"></i> 4.7 (35 reviews)
+                                </div>
+                            </div>
+                            <div class="service-provider">
+                                <div class="provider-logo">SM</div>
+                                <div class="provider-name">Social Media Pros</div>
+                            </div>
+                            <a href="#" class="contact-btn">Contact Provider</a>
+                        </div>
+                    </div>
+                    
+                    <div class="service-card">
+                        <div class="service-image">
+                            <img src="https://images.unsplash.com/photo-1470225620780-dba8ba36b745?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=500&q=80" alt="Photography">
+                        </div>
+                        <div class="service-info">
+                            <h3 class="service-title">Professional Product Photography</h3>
+                            <ul class="service-description">
+                                <li><i class="fas fa-check-circle"></i> High-quality product images</li>
+                                <li><i class="fas fa-check-circle"></i> Studio lighting setup</li>
+                                <li><i class="fas fa-check-circle"></i> Background removal included</li>
+                            </ul>
+                            <div class="service-price">Starting at ₵150/session</div>
+                            <div class="service-delivery">
+                                <span><i class="fas fa-clock"></i> 2-3 days delivery</span>
+                                <div class="service-rating">
+                                    <i class="fas fa-star"></i> 4.9 (19 reviews)
+                                </div>
+                            </div>
+                            <div class="service-provider">
+                                <div class="provider-logo">PP</div>
+                                <div class="provider-name">Pro Photography Studio</div>
+                            </div>
+                            <a href="#" class="contact-btn">Contact Provider</a>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </div>
+    
+    <!-- Filters Modal -->
+    <div class="filters-modal" id="filters-modal">
+        <div class="filters-container">
+            <div class="modal-header">
+                <h3>Filter Options</h3>
+                <button class="close-modal" id="close-filters">&times;</button>
+            </div>
+            
+            <div class="filter-section">
+                <h4>Categories</h4>
+                <div class="filter-options" id="category-filter">
+                    <label>
+                        <input type="checkbox" name="category" value="electronics"> Electronics
+                    </label>
+                    <label>
+                        <input type="checkbox" name="category" value="fashion"> Fashion & Apparel
+                    </label>
+                    <label>
+                        <input type="checkbox" name="category" value="home"> Home & Garden
+                    </label>
+                    <label>
+                        <input type="checkbox" name="category" value="beauty"> Beauty & Personal Care
+                    </label>
+                    <label>
+                        <input type="checkbox" name="category" value="crafts"> Handicrafts
+                    </label>
+                </div>
+            </div>
+            
+            <div class="filter-section">
+                <h4>Price Range (₵)</h4>
+                <div class="price-range">
+                    <input type="number" id="min-price" placeholder="Min" min="0">
+                    <input type="number" id="max-price" placeholder="Max" min="0">
+                </div>
+                <div class="filter-buttons">
+                    <button class="apply-btn" id="apply-price">Apply Price</button>
+                    <button class="reset-btn" id="reset-price">Reset</button>
+                </div>
+            </div>
+            
+            <div class="filter-section">
+                <h4>Location</h4>
+                <div class="filter-options" id="location-filter">
+                    <label>
+                        <input type="checkbox" name="location" value="accra"> Accra
+                    </label>
+                    <label>
+                        <input type="checkbox" name="location" value="kumasi"> Kumasi
+                    </label>
+                    <label>
+                        <input type="checkbox" name="location" value="tamale"> Tamale
+                    </label>
+                    <label>
+                        <input type="checkbox" name="location" value="bolga"> Bolgatanga
+                    </label>
+                    <label>
+                        <input type="checkbox" name="location" value="cape"> Cape Coast
+                    </label>
+                </div>
+            </div>
+            
+            <div class="filter-section">
+                <h4>Supplier Type</h4>
+                <div class="filter-options" id="type-filter">
+                    <label>
+                        <input type="checkbox" name="type" value="verified"> Verified Only
+                    </label>
+                    <label>
+                        <input type="checkbox" name="type" value="premium"> Premium Suppliers
+                    </label>
+                    <label>
+                        <input type="checkbox" name="type" value="local"> Local Artisans
+                    </label>
+                </div>
+            </div>
+            
+            <div class="filter-buttons" style="margin-top: 20px;">
+                <button class="apply-btn" style="flex: 2;">Apply Filters</button>
+                <button class="reset-btn">Reset All</button>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3>About Townssy</h3>
+                    <p>Connecting buyers with trusted suppliers and service providers. Our platform makes commerce easier and more reliable.</p>
+                    <div class="social-links" style="margin-top: 20px;">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-whatsapp"></i></a>
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Products</h3>
+                    <ul class="footer-links">
+                        <li><a href="#"><i class="fas fa-chevron-right"></i> Electronics</a></li>
+                        <li><a href="#"><i class="fas fa-chevron-right"></i> Home & Garden</a></li>
+                        <li><a href="#"><i class="fas fa-chevron-right"></i> Apparel</a></li>
+                        <li><a href="#"><i class="fas fa-chevron-right"></i> Machinery</a></li>
+                        <li><a href="#"><i class="fas fa-chevron-right"></i> Beauty & Personal Care</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Services</h3>
+                    <ul class="footer-links">
+                        <li><a href="#"><i class="fas fa-chevron-right"></i> Design & Creative</a></li>
+                        <li><a href="#"><i class="fas fa-chevron-right"></i> Digital Marketing</a></li>
+                        <li><a href="#"><i class="fas fa-chevron-right"></i> Writing & Translation</a></li>
+                        <li><a href="#"><i class="fas fa-chevron-right"></i> Programming & Tech</a></li>
+                        <li><a href="#"><i class="fas fa-chevron-right"></i> Business Consulting</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Contact Us</h3>
+                    <ul class="footer-links">
+                        <li><a href="#"><i class="fas fa-map-marker-alt"></i> Accra, Ghana</a></li>
+                        <li><a href="tel:+233257785088"><i class="fas fa-phone"></i> +233 25 778 5088</a></li>
+                        <li><a href="mailto:info@townssy.com"><i class="fas fa-envelope"></i> info@townssy.com</a></li>
+                        <li><a href="https://wa.me/233257785088"><i class="fab fa-whatsapp"></i> WhatsApp Support</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="copyright">
+                <p>&copy; 2023 Townssy Marketplace. All rights reserved. | Connecting Global Buyers and Providers</p>
+            </div>
+        </div>
+    </footer>
+   
+        // Filter modal functionality
+        const filtersModal = document.getElementById('filters-modal');
+        const openFiltersBtn = document.getElementById('open-filters');
+        const closeFiltersBtn = document.getElementById('close-filters');
+        
+        openFiltersBtn.addEventListener('click', () => {
+            filtersModal.style.display = 'flex';
+            document.body.style.overflow = 'hidden';
+        });
+        
+        closeFiltersBtn.addEventListener('click', () => {
+            filtersModal.style.display = 'none';
+            document.body.style.overflow = 'auto';
+        });
+        
+        // Close modal if clicked outside of content
+        filtersModal.addEventListener('click', (e) => {
+            if (e.target === filtersModal) {
+                filtersModal.style.display = 'none';
+                document.body.style.overflow = 'auto';
+            }
+        });
+        
+        // Tab switching functionality
+        const navTabs = document.querySelectorAll('.nav-tab');
+        const productsSection = document.getElementById('products-section');
+        const servicesSection = document.getElementById('services-section');
+        
+        navTabs.forEach(tab => {
+            tab.addEventListener('click', () => {
+                // Remove active class from all tabs
+                navTabs.forEach(t => t.classList.remove('active'));
+                
+                // Add active class to clicked tab
+                tab.classList.add('active');
+                
+                // Hide all sections
+                productsSection.classList.remove('active-section');
+                servicesSection.classList.remove('active-section');
+                
+                // Show the selected section
+                if (tab.dataset.tab === 'products') {
+                    productsSection.classList.add('active-section');
+                } else if (tab.dataset.tab === 'services') {
+                    servicesSection.classList.add('active-section');
+                }
+            });
+        });
+        
+        // Apply price filter
+        document.getElementById('apply-price').addEventListener('click', () => {
+            const minPrice = document.getElementById('min-price').value;
+            const maxPrice = document.getElementById('max-price').value;
+            
+            if (minPrice || maxPrice) {
+                alert(`Applying price filter: Min: ${minPrice || 'Any'}, Max: ${maxPrice || 'Any'}`);
+            } else {
+                alert('Please enter at least one price value');
+            }
+        });
+        
+        // Reset price filter
+        document.getElementById('reset-price').addEventListener('click', () => {
+            document.getElementById('min-price').value = '';
+            document.getElementById('max-price').value = '';
+        });
+        
+        // Apply all filters
+        document.querySelector('.apply-btn[style]').addEventListener('click', () => {
+            alert('Filters applied successfully!');
+            filtersModal.style.display = 'none';
+            document.body.style.overflow = 'auto';
+        });
+        
+        // Reset all filters
+        document.querySelector('.filter-buttons .reset-btn').addEventListener('click', () => {
+            const checkboxes = document.querySelectorAll('.filter-options input[type="checkbox"]');
+            checkboxes.forEach(checkbox => {
+                checkbox.checked = false;
+            });
+            document.getElementById('min-price').value = '';
+            document.getElementById('max-price').value = '';
+            alert('All filters reset!');
+        });
+        
+        // Service category selection
+        const categoryCards = document.querySelectorAll('.category-card');
+        categoryCards.forEach(card => {
+            card.addEventListener('click', () => {
+                categoryCards.forEach(c => c.classList.remove('active'));
+                card.classList.add('active');
+                alert(`Filtering services for: ${card.querySelector('.category-name').textContent}`);
+            });
+        });
+   <script src="./script.js"></script>
 </html>

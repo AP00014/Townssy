@@ -1,5 +1,4 @@
-  
-        // Sample data for products
+    // Sample data for products
         const products = [
             {
                 id: 1,
@@ -271,356 +270,417 @@
             locations: ["ghana", "nigeria", "south-africa", "china", "turkey"],
             types: ["manufacturer", "trading", "verified"]
         };
-        
-        // DOM Elements
-        const productsContainer = document.getElementById('products-container');
-        const servicesContainer = document.getElementById('services-container');
-        const categoryFilter = document.getElementById('category-filter');
-        const locationFilter = document.getElementById('location-filter');
-        const typeFilter = document.getElementById('type-filter');
-        const navTabs = document.querySelectorAll('.nav-tab');
-        const productsSection = document.getElementById('products-section');
-        const servicesSection = document.getElementById('services-section');
-        const serviceCategoriesContainer = document.getElementById('service-categories');
-        const minPriceInput = document.getElementById('min-price');
-        const maxPriceInput = document.getElementById('max-price');
-        const applyPriceBtn = document.getElementById('apply-price');
-        const resetPriceBtn = document.getElementById('reset-price');
-        const productSortSelect = document.getElementById('product-sort');
-        const serviceSortSelect = document.getElementById('service-sort');
-        
-        // Current filters
-        let currentFilters = {
-            category: [],
-            location: [],
-            type: [],
-            minPrice: 0,
-            maxPrice: Infinity
-        };
-        
-        let currentServiceCategory = 'all';
-        
-        // Initialize the page
-        function initPage() {
-            renderProducts(products);
-            renderServices(services);
-            renderFilterOptions();
-            renderServiceCategories();
-            setupEventListeners();
-        }
-        
-        // Render products to the page
-        function renderProducts(productsArray) {
-            productsContainer.innerHTML = '';
-            
-            if (productsArray.length === 0) {
-                productsContainer.innerHTML = '<div class="no-results">No products match your filters</div>';
-                return;
-            }
-            
-            productsArray.forEach(product => {
-                const productCard = document.createElement('div');
-                productCard.className = 'product-card';
-                productCard.innerHTML = `
-                    ${product.badge ? `<div class="product-badge">${product.badge}</div>` : ''}
-                    <div class="product-image">
-                        <img src="${product.image}" alt="${product.name}">
-                    </div>
-                    <div class="product-info">
-                        <h3 class="product-title">${product.name} - ${product.description}</h3>
-                        <ul class="product-specs">
-                            ${product.specs.map(spec => `<li><i class="fas fa-check-circle"></i> ${spec}</li>`).join('')}
-                        </ul>
-                        <div class="product-price">$${product.minPrice} - $${product.maxPrice}</div>
-                        <div class="product-meta">
-                            <span><i class="fas fa-box"></i> Min. Order: ${product.minOrder} pieces</span>
-                            <span><i class="fas fa-shipping-fast"></i> ${product.shipping}</span>
-                        </div>
-                        <div class="product-supplier">
-                            <div class="supplier-logo">${product.supplier.substring(0,2)}</div>
-                            <div class="supplier-name">${product.supplier} ${product.verified ? '<i class="fas fa-check-circle verified-badge"></i>' : ''}</div>
-                        </div>
-                        <a href="https://wa.me/233257785088?text=I'm%20interested%20in%20${encodeURIComponent(product.name)}" class="contact-btn">
-                            <i class="fab fa-whatsapp"></i> Contact Supplier
-                        </a>
-                    </div>
-                `;
-                productsContainer.appendChild(productCard);
-            });
-        }
-        
-        // Render services to the page
-        function renderServices(servicesArray) {
-            servicesContainer.innerHTML = '';
-            
-            if (servicesArray.length === 0) {
-                servicesContainer.innerHTML = '<div class="no-results">No services match your filters</div>';
-                return;
-            }
-            
-            servicesArray.forEach(service => {
-                const serviceCard = document.createElement('div');
-                serviceCard.className = 'service-card';
-                serviceCard.innerHTML = `
-                    ${service.badge ? `<div class="service-badge">${service.badge}</div>` : ''}
-                    <div class="service-image">
-                        <img src="${service.image}" alt="${service.title}">
-                    </div>
-                    <div class="service-info">
-                        <h3 class="service-title">${service.title}</h3>
-                        <div class="service-description">${service.description}</div>
-                        <div class="service-rating">
-                            <i class="fas fa-star"></i> ${service.rating} (${service.reviews} reviews)
-                        </div>
-                        <div class="service-delivery">
-                            <span><i class="fas fa-clock"></i> Delivery: ${service.delivery}</span>
-                            <span class="service-price">$${service.price}</span>
-                        </div>
-                        <div class="service-provider">
-                            <div class="provider-logo">${service.provider.substring(0,2)}</div>
-                            <div class="provider-name">${service.provider} ${service.verified ? '<i class="fas fa-check-circle verified-badge"></i>' : ''}</div>
-                        </div>
-                        <a href="https://wa.me/233257785088?text=I'm%20interested%20in%20your%20${encodeURIComponent(service.title)}%20service" class="contact-btn">
-                            <i class="fab fa-whatsapp"></i> Contact Provider
-                        </a>
-                    </div>
-                `;
-                servicesContainer.appendChild(serviceCard);
-            });
-        }
-        
-        // Render filter options
-        function renderFilterOptions() {
-            // Category filter
-            filterOptions.categories.forEach(category => {
-                const label = document.createElement('label');
-                label.innerHTML = `
-                    <input type="checkbox" value="${category}"> ${category.charAt(0).toUpperCase() + category.slice(1)}
-                `;
-                categoryFilter.appendChild(label);
-            });
-            
-            // Location filter
-            filterOptions.locations.forEach(location => {
-                const label = document.createElement('label');
-                const displayName = location.replace('-', ' ').split(' ')
-                    .map(word => word.charAt(0).toUpperCase() + word.slice(1))
-                    .join(' ');
-                    
-                label.innerHTML = `
-                    <input type="checkbox" value="${location}"> ${displayName}
-                `;
-                locationFilter.appendChild(label);
-            });
-            
-            // Type filter
-            filterOptions.types.forEach(type => {
-                const label = document.createElement('label');
-                const displayName = type.charAt(0).toUpperCase() + type.slice(1);
-                label.innerHTML = `
-                    <input type="checkbox" value="${type}"> ${displayName}
-                `;
-                typeFilter.appendChild(label);
-            });
-        }
-        
-        // Render service categories
-        function renderServiceCategories() {
-            // Add "All" category
-            const allCategory = document.createElement('div');
-            allCategory.className = 'category-card active';
-            allCategory.dataset.category = 'all';
-            allCategory.innerHTML = `
-                <div class="category-icon"><i class="fas fa-star"></i></div>
-                <div class="category-name">All Services</div>
-            `;
-            serviceCategoriesContainer.appendChild(allCategory);
-            
-            // Add other categories
-            serviceCategories.forEach(category => {
-                const categoryCard = document.createElement('div');
-                categoryCard.className = 'category-card';
-                categoryCard.dataset.category = category.id;
-                categoryCard.innerHTML = `
-                    <div class="category-icon"><i class="${category.icon}"></i></div>
-                    <div class="category-name">${category.name}</div>
-                `;
-                serviceCategoriesContainer.appendChild(categoryCard);
-            });
-        }
-        
-        // Apply filters to products
-        function applyFilters() {
-            const filteredProducts = products.filter(product => {
-                // Category filter
-                if (currentFilters.category.length > 0 && !currentFilters.category.includes(product.category)) {
-                    return false;
-                }
-                
-                // Location filter
-                if (currentFilters.location.length > 0 && !currentFilters.location.includes(product.location)) {
-                    return false;
-                }
-                
-                // Type filter
-                if (currentFilters.type.length > 0) {
-                    if (currentFilters.type.includes('verified') && !product.verified) {
-                        return false;
-                    }
-                    if (currentFilters.type.includes('manufacturer') && product.type !== 'manufacturer') {
-                        return false;
-                    }
-                    if (currentFilters.type.includes('trading') && product.type !== 'trading') {
-                        return false;
-                    }
-                }
-                
-                // Price filter
-                if (product.minPrice < currentFilters.minPrice || product.minPrice > currentFilters.maxPrice) {
-                    return false;
-                }
-                
-                return true;
-            });
-            
-            // Sort products
-            const sortedProducts = sortProducts(filteredProducts, productSortSelect.value);
-            renderProducts(sortedProducts);
-        }
-        
-        // Apply service filters
-        function applyServiceFilters() {
-            let filteredServices = services;
-            
-            // Category filter
-            if (currentServiceCategory !== 'all') {
-                filteredServices = filteredServices.filter(service => service.category === currentServiceCategory);
-            }
-            
-            // Sort services
-            const sortedServices = sortServices(filteredServices, serviceSortSelect.value);
-            renderServices(sortedServices);
-        }
-        
-        // Sort products
-        function sortProducts(productsArray, sortBy) {
-            return [...productsArray].sort((a, b) => {
-                switch(sortBy) {
-                    case 'price-low':
-                        return a.minPrice - b.minPrice;
-                    case 'price-high':
-                        return b.minPrice - a.minPrice;
-                    case 'newest':
-                        return b.id - a.id;
-                    default: // featured
-                        return a.id - b.id;
-                }
-            });
-        }
-        
-        // Sort services
-        function sortServices(servicesArray, sortBy) {
-            return [...servicesArray].sort((a, b) => {
-                switch(sortBy) {
-                    case 'price-low':
-                        return a.price - b.price;
-                    case 'price-high':
-                        return b.price - a.price;
-                    case 'rating':
-                        return b.rating - a.rating;
-                    default: // featured
-                        return a.id - b.id;
-                }
-            });
-        }
-        
-        // Set up event listeners
-        function setupEventListeners() {
-            // Tab switching
-            navTabs.forEach(tab => {
-                tab.addEventListener('click', () => {
-                    navTabs.forEach(t => t.classList.remove('active'));
-                    tab.classList.add('active');
-                    
-                    if (tab.dataset.tab === 'products') {
-                        productsSection.classList.add('active-section');
-                        servicesSection.classList.remove('active-section');
-                    } else {
-                        servicesSection.classList.add('active-section');
-                        productsSection.classList.remove('active-section');
-                    }
-                });
-            });
-            
-            // Filter change events
-            document.querySelectorAll('#category-filter input').forEach(input => {
-                input.addEventListener('change', () => {
-                    if (input.checked) {
-                        currentFilters.category.push(input.value);
-                    } else {
-                        currentFilters.category = currentFilters.category.filter(cat => cat !== input.value);
-                    }
-                    applyFilters();
-                });
-            });
-            
-            document.querySelectorAll('#location-filter input').forEach(input => {
-                input.addEventListener('change', () => {
-                    if (input.checked) {
-                        currentFilters.location.push(input.value);
-                    } else {
-                        currentFilters.location = currentFilters.location.filter(loc => loc !== input.value);
-                    }
-                    applyFilters();
-                });
-            });
-            
-            document.querySelectorAll('#type-filter input').forEach(input => {
-                input.addEventListener('change', () => {
-                    if (input.checked) {
-                        currentFilters.type.push(input.value);
-                    } else {
-                        currentFilters.type = currentFilters.type.filter(type => type !== input.value);
-                    }
-                    applyFilters();
-                });
-            });
-            
-            // Price filter buttons
-            applyPriceBtn.addEventListener('click', () => {
-                currentFilters.minPrice = parseFloat(minPriceInput.value) || 0;
-                currentFilters.maxPrice = parseFloat(maxPriceInput.value) || Infinity;
-                applyFilters();
-            });
-            
-            resetPriceBtn.addEventListener('click', () => {
-                minPriceInput.value = '';
-                maxPriceInput.value = '';
-                currentFilters.minPrice = 0;
-                currentFilters.maxPrice = Infinity;
-                applyFilters();
-            });
-            
-            // Sort change events
-            productSortSelect.addEventListener('change', () => {
-                applyFilters();
-            });
-            
-            serviceSortSelect.addEventListener('change', () => {
-                applyServiceFilters();
-            });
-            
-            // Service category selection
-            document.querySelectorAll('.category-card').forEach(card => {
-                card.addEventListener('click', () => {
-                    document.querySelectorAll('.category-card').forEach(c => c.classList.remove('active'));
-                    card.classList.add('active');
-                    currentServiceCategory = card.dataset.category;
-                    applyServiceFilters();
-                });
-            });
-        }
-        
-        // Initialize the page when loaded
-        window.addEventListener('DOMContentLoaded', initPage);
+
+        // ... (products, services, serviceCategories, and filterOptions arrays remain unchanged) ...
+
+// DOM Elements
+const productsContainer = document.getElementById('products-container');
+const servicesContainer = document.getElementById('services-container');
+const categoryFilter = document.getElementById('category-filter');
+const locationFilter = document.getElementById('location-filter');
+const typeFilter = document.getElementById('type-filter');
+const navTabs = document.querySelectorAll('.nav-tab');
+const productsSection = document.getElementById('products-section');
+const servicesSection = document.getElementById('services-section');
+const serviceCategoriesContainer = document.getElementById('service-categories');
+const minPriceInput = document.getElementById('min-price');
+const maxPriceInput = document.getElementById('max-price');
+const applyPriceBtn = document.getElementById('apply-price');
+const resetPriceBtn = document.getElementById('reset-price');
+const productSortSelect = document.getElementById('product-sort');
+const serviceSortSelect = document.getElementById('service-sort');
+const filtersModal = document.getElementById('filters-modal');
+const openFiltersBtn = document.getElementById('open-filters');
+const closeFiltersBtn = document.getElementById('close-filters');
+const resetAllBtn = document.querySelector('.filter-buttons .reset-btn');
+
+// Current filters
+let currentFilters = {
+    category: [],
+    location: [],
+    type: [],
+    minPrice: 0,
+    maxPrice: Infinity
+};
+
+let currentServiceCategory = 'all';
+
+// Initialize the page
+function initPage() {
+    renderProducts(products);
+    renderServices(services);
+    renderFilterOptions();
+    renderServiceCategories();
+    setupEventListeners();
+}
+
+// Render products to the page
+function renderProducts(productsArray) {
+    productsContainer.innerHTML = '';
     
+    if (productsArray.length === 0) {
+        productsContainer.innerHTML = '<div class="no-results">No products match your filters</div>';
+        return;
+    }
+    
+    productsArray.forEach(product => {
+        const productCard = document.createElement('div');
+        productCard.className = 'product-card';
+        productCard.innerHTML = `
+            ${product.badge ? `<div class="product-badge">${product.badge}</div>` : ''}
+            <div class="product-image">
+                <img src="${product.image}" alt="${product.name}">
+            </div>
+            <div class="product-info">
+                <h3 class="product-title">${product.name} - ${product.description}</h3>
+                <ul class="product-specs">
+                    ${product.specs.map(spec => `<li><i class="fas fa-check-circle"></i> ${spec}</li>`).join('')}
+                </ul>
+                <div class="product-price">$${product.minPrice} - $${product.maxPrice}</div>
+                <div class="product-meta">
+                    <span><i class="fas fa-box"></i> Min. Order: ${product.minOrder} pieces</span>
+                    <span><i class="fas fa-shipping-fast"></i> ${product.shipping}</span>
+                </div>
+                <div class="product-supplier">
+                    <div class="supplier-logo">${product.supplier.substring(0,2)}</div>
+                    <div class="supplier-name">${product.supplier} ${product.verified ? '<i class="fas fa-check-circle verified-badge"></i>' : ''}</div>
+                </div>
+                <a href="https://wa.me/233257785088?text=I'm%20interested%20in%20${encodeURIComponent(product.name)}" class="contact-btn">
+                    <i class="fab fa-whatsapp"></i> Contact Supplier
+                </a>
+            </div>
+        `;
+        productsContainer.appendChild(productCard);
+    });
+}
+
+// Render services to the page
+function renderServices(servicesArray) {
+    servicesContainer.innerHTML = '';
+    
+    if (servicesArray.length === 0) {
+        servicesContainer.innerHTML = '<div class="no-results">No services match your filters</div>';
+        return;
+    }
+    
+    servicesArray.forEach(service => {
+        const serviceCard = document.createElement('div');
+        serviceCard.className = 'service-card';
+        serviceCard.innerHTML = `
+            ${service.badge ? `<div class="service-badge">${service.badge}</div>` : ''}
+            <div class="service-image">
+                <img src="${service.image}" alt="${service.title}">
+            </div>
+            <div class="service-info">
+                <h3 class="service-title">${service.title}</h3>
+                <div class="service-description">${service.description}</div>
+                <div class="service-rating">
+                    <i class="fas fa-star"></i> ${service.rating} (${service.reviews} reviews)
+                </div>
+                <div class="service-delivery">
+                    <span><i class="fas fa-clock"></i> Delivery: ${service.delivery}</span>
+                    <span class="service-price">$${service.price}</span>
+                </div>
+                <div class="service-provider">
+                    <div class="provider-logo">${service.provider.substring(0,2)}</div>
+                    <div class="provider-name">${service.provider} ${service.verified ? '<i class="fas fa-check-circle verified-badge"></i>' : ''}</div>
+                </div>
+                <a href="https://wa.me/233257785088?text=I'm%20interested%20in%20your%20${encodeURIComponent(service.title)}%20service" class="contact-btn">
+                    <i class="fab fa-whatsapp"></i> Contact Provider
+                </a>
+            </div>
+        `;
+        servicesContainer.appendChild(serviceCard);
+    });
+}
+
+// Render filter options
+function renderFilterOptions() {
+    // Category filter
+    filterOptions.categories.forEach(category => {
+        const label = document.createElement('label');
+        label.innerHTML = `
+            <input type="checkbox" value="${category}"> ${category.charAt(0).toUpperCase() + category.slice(1)}
+        `;
+        categoryFilter.appendChild(label);
+    });
+    
+    // Location filter
+    filterOptions.locations.forEach(location => {
+        const label = document.createElement('label');
+        const displayName = location.replace('-', ' ').split(' ')
+            .map(word => word.charAt(0).toUpperCase() + word.slice(1))
+            .join(' ');
+            
+        label.innerHTML = `
+            <input type="checkbox" value="${location}"> ${displayName}
+        `;
+        locationFilter.appendChild(label);
+    });
+    
+    // Type filter
+    filterOptions.types.forEach(type => {
+        const label = document.createElement('label');
+        const displayName = type.charAt(0).toUpperCase() + type.slice(1);
+        label.innerHTML = `
+            <input type="checkbox" value="${type}"> ${displayName}
+        `;
+        typeFilter.appendChild(label);
+    });
+}
+
+// Render service categories
+function renderServiceCategories() {
+    // Add "All" category
+    const allCategory = document.createElement('div');
+    allCategory.className = 'category-card active';
+    allCategory.dataset.category = 'all';
+    allCategory.innerHTML = `
+        <div class="category-icon"><i class="fas fa-star"></i></div>
+        <div class="category-name">All Services</div>
+    `;
+    serviceCategoriesContainer.appendChild(allCategory);
+    
+    // Add other categories
+    serviceCategories.forEach(category => {
+        const categoryCard = document.createElement('div');
+        categoryCard.className = 'category-card';
+        categoryCard.dataset.category = category.id;
+        categoryCard.innerHTML = `
+            <div class="category-icon"><i class="${category.icon}"></i></div>
+            <div class="category-name">${category.name}</div>
+        `;
+        serviceCategoriesContainer.appendChild(categoryCard);
+    });
+}
+
+// Apply filters to products
+function applyFilters() {
+    const filteredProducts = products.filter(product => {
+        // Category filter
+        if (currentFilters.category.length > 0 && !currentFilters.category.includes(product.category)) {
+            return false;
+        }
+        
+        // Location filter
+        if (currentFilters.location.length > 0 && !currentFilters.location.includes(product.location)) {
+            return false;
+        }
+        
+        // Type filter
+        if (currentFilters.type.length > 0) {
+            if (currentFilters.type.includes('verified') && !product.verified) {
+                return false;
+            }
+            if (currentFilters.type.includes('manufacturer') && product.type !== 'manufacturer') {
+                return false;
+            }
+            if (currentFilters.type.includes('trading') && product.type !== 'trading') {
+                return false;
+            }
+        }
+        
+        // Price filter
+        if (product.minPrice < currentFilters.minPrice || product.minPrice > currentFilters.maxPrice) {
+            return false;
+        }
+        
+        return true;
+    });
+    
+    // Sort products
+    const sortedProducts = sortProducts(filteredProducts, productSortSelect.value);
+    renderProducts(sortedProducts);
+}
+
+// Apply service filters
+function applyServiceFilters() {
+    let filteredServices = services;
+    
+    // Category filter
+    if (currentServiceCategory !== 'all') {
+        filteredServices = filteredServices.filter(service => service.category === currentServiceCategory);
+    }
+    
+    // Sort services
+    const sortedServices = sortServices(filteredServices, serviceSortSelect.value);
+    renderServices(sortedServices);
+}
+
+// Sort products
+function sortProducts(productsArray, sortBy) {
+    return [...productsArray].sort((a, b) => {
+        switch(sortBy) {
+            case 'price-low':
+                return a.minPrice - b.minPrice;
+            case 'price-high':
+                return b.minPrice - a.minPrice;
+            case 'newest':
+                return b.id - a.id;
+            default: // featured
+                return a.id - b.id;
+        }
+    });
+}
+
+// Sort services
+function sortServices(servicesArray, sortBy) {
+    return [...servicesArray].sort((a, b) => {
+        switch(sortBy) {
+            case 'price-low':
+                return a.price - b.price;
+            case 'price-high':
+                return b.price - a.price;
+            case 'rating':
+                return b.rating - a.rating;
+            default: // featured
+                return a.id - b.id;
+        }
+    });
+}
+
+// Reset all filters
+function resetAllFilters() {
+    // Uncheck all checkboxes
+    document.querySelectorAll('.filter-options input[type="checkbox"]').forEach(checkbox => {
+        checkbox.checked = false;
+    });
+    
+    // Reset price inputs
+    minPriceInput.value = '';
+    maxPriceInput.value = '';
+    
+    // Reset currentFilters
+    currentFilters = {
+        category: [],
+        location: [],
+        type: [],
+        minPrice: 0,
+        maxPrice: Infinity
+    };
+    
+    // Reset service category to 'all'
+    currentServiceCategory = 'all';
+    // Update active category card
+    document.querySelectorAll('.category-card').forEach(card => {
+        card.classList.remove('active');
+        if (card.dataset.category === 'all') {
+            card.classList.add('active');
+        }
+    });
+    
+    // Apply filters for products and services
+    applyFilters();
+    applyServiceFilters();
+}
+
+// Set up event listeners
+function setupEventListeners() {
+    // Modal functionality
+    openFiltersBtn.addEventListener('click', () => {
+        filtersModal.style.display = 'flex';
+        document.body.style.overflow = 'hidden';
+    });
+    
+    closeFiltersBtn.addEventListener('click', () => {
+        filtersModal.style.display = 'none';
+        document.body.style.overflow = 'auto';
+    });
+    
+    filtersModal.addEventListener('click', (e) => {
+        if (e.target === filtersModal) {
+            filtersModal.style.display = 'none';
+            document.body.style.overflow = 'auto';
+        }
+    });
+    
+    // Tab switching
+    navTabs.forEach(tab => {
+        tab.addEventListener('click', () => {
+            navTabs.forEach(t => t.classList.remove('active'));
+            tab.classList.add('active');
+            
+            if (tab.dataset.tab === 'products') {
+                productsSection.classList.add('active-section');
+                servicesSection.classList.remove('active-section');
+            } else {
+                servicesSection.classList.add('active-section');
+                productsSection.classList.remove('active-section');
+            }
+        });
+    });
+    
+    // Filter change events
+    document.querySelectorAll('#category-filter input').forEach(input => {
+        input.addEventListener('change', () => {
+            if (input.checked) {
+                currentFilters.category.push(input.value);
+            } else {
+                currentFilters.category = currentFilters.category.filter(cat => cat !== input.value);
+            }
+            applyFilters();
+        });
+    });
+    
+    document.querySelectorAll('#location-filter input').forEach(input => {
+        input.addEventListener('change', () => {
+            if (input.checked) {
+                currentFilters.location.push(input.value);
+            } else {
+                currentFilters.location = currentFilters.location.filter(loc => loc !== input.value);
+            }
+            applyFilters();
+        });
+    });
+    
+    document.querySelectorAll('#type-filter input').forEach(input => {
+        input.addEventListener('change', () => {
+            if (input.checked) {
+                currentFilters.type.push(input.value);
+            } else {
+                currentFilters.type = currentFilters.type.filter(type => type !== input.value);
+            }
+            applyFilters();
+        });
+    });
+    
+    // Price filter buttons
+    applyPriceBtn.addEventListener('click', () => {
+        currentFilters.minPrice = parseFloat(minPriceInput.value) || 0;
+        currentFilters.maxPrice = parseFloat(maxPriceInput.value) || Infinity;
+        applyFilters();
+    });
+    
+    resetPriceBtn.addEventListener('click', () => {
+        minPriceInput.value = '';
+        maxPriceInput.value = '';
+        currentFilters.minPrice = 0;
+        currentFilters.maxPrice = Infinity;
+        applyFilters();
+    });
+    
+    // Sort change events
+    productSortSelect.addEventListener('change', () => {
+        applyFilters();
+    });
+    
+    serviceSortSelect.addEventListener('change', () => {
+        applyServiceFilters();
+    });
+    
+    // Service category selection
+    document.querySelectorAll('.category-card').forEach(card => {
+        card.addEventListener('click', () => {
+            document.querySelectorAll('.category-card').forEach(c => c.classList.remove('active'));
+            card.classList.add('active');
+            currentServiceCategory = card.dataset.category;
+            applyServiceFilters();
+        });
+    });
+    
+    // Reset all filters button
+    resetAllBtn.addEventListener('click', resetAllFilters);
+}
+
+// Initialize the page when loaded
+window.addEventListener('DOMContentLoaded', initPage);
