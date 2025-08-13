@@ -1732,3 +1732,19 @@ footer {
 input.error, select.error, textarea.error {
     border-color: #dc3545;
 }
+
+ .contact-item li {
+            list-style: none;
+            margin-bottom: 5px;
+        }
+        
+        .contact-item a {
+            text-decoration: none;
+            color: #333;
+            font-size: 1.2rem;
+            display: flex;
+            align-items: center;
+            transition: all 0.3s;
+            font-weight: 500;
+        }
+        
