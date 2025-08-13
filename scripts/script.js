@@ -250,3 +250,176 @@
                 });
             });
         });
+
+
+
+         document.addEventListener('DOMContentLoaded', function() {
+            // Animation on scroll
+            const animateElements = document.querySelectorAll('.animate-on-scroll');
+            
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                    }
+                });
+            }, {
+                threshold: 0.1
+            });
+            
+            animateElements.forEach(el => {
+                observer.observe(el);
+            });
+            
+            // Form handling
+            const contactForm = document.getElementById('contactForm');
+            const submitBtn = document.getElementById('submit-btn');
+            const formStatus = document.getElementById('form-status');
+            
+            contactForm.addEventListener('submit', async function(e) {
+                e.preventDefault();
+                
+                // Reset previous errors
+                clearErrors();
+                
+                // Validate inputs
+                const isValid = validateForm();
+                
+                if (isValid) {
+                    submitBtn.disabled = true;
+                    submitBtn.textContent = 'Sending...';
+                    
+                    try {
+                        // Simulate Formspree submission - in a real implementation, 
+                        // you would use your actual Formspree endpoint
+                        await simulateFormspreeSubmission();
+                        
+                        showSuccess('Message sent successfully! We will get back to you soon.');
+                        contactForm.reset();
+                    } catch (error) {
+                        showError('There was a problem submitting your form. Please try again later.');
+                        console.error('Form submission error:', error);
+                    } finally {
+                        submitBtn.disabled = false;
+                        submitBtn.textContent = 'Send Message';
+                    }
+                }
+            });
+            
+            // Form validation functions
+            function validateForm() {
+                let isValid = true;
+                
+                // Validate Name
+                const name = document.getElementById('name').value.trim();
+                if (name.length < 2) {
+                    showError('name-error', 'Please enter your full name (at least 2 characters)');
+                    isValid = false;
+                }
+                
+                // Validate Email
+                const email = document.getElementById('email').value.trim();
+                if (!isValidEmail(email)) {
+                    showError('email-error', 'Please enter a valid email address');
+                    isValid = false;
+                }
+                
+                // Validate Subject
+                const subject = document.getElementById('subject').value;
+                if (!subject) {
+                    showError('subject-error', 'Please select a subject');
+                    isValid = false;
+                }
+                
+                // Validate Message
+                const message = document.getElementById('message').value.trim();
+                if (message.length < 10) {
+                    showError('message-error', 'Please enter a message (at least 10 characters)');
+                    isValid = false;
+                }
+                
+                return isValid;
+            }
+            
+            function isValidEmail(email) {
+                const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+                return re.test(email);
+            }
+            
+            function showError(id, message) {
+                const errorElement = document.getElementById(id);
+                errorElement.textContent = message;
+                errorElement.style.display = 'block';
+                errorElement.previousElementSibling.classList.add('error');
+            }
+            
+            function clearErrors() {
+                const errorElements = document.querySelectorAll('.error-message');
+                errorElements.forEach(el => {
+                    el.textContent = '';
+                    el.style.display = 'none';
+                });
+                
+                const formControls = document.querySelectorAll('.form-control');
+                formControls.forEach(control => {
+                    control.classList.remove('error');
+                });
+                
+                formStatus.textContent = '';
+                formStatus.className = 'form-status';
+            }
+            
+            function showSuccess(message) {
+                formStatus.textContent = message;
+                formStatus.className = 'form-status success';
+            }
+            
+            function showError(message) {
+                formStatus.textContent = message;
+                formStatus.className = 'form-status error';
+            }
+            
+            // Simulate Formspree submission (replace with actual Formspree fetch in production)
+            function simulateFormspreeSubmission() {
+                return new Promise((resolve, reject) => {
+                    setTimeout(() => {
+                        // Simulate 90% success rate
+                        if (Math.random() > 0.1) {
+                            resolve();
+                        } else {
+                            reject(new Error('Network error'));
+                        }
+                    }, 1500);
+                });
+            }
+            
+            // Real Formspree submission (uncomment and replace with your Formspree ID)
+          
+            async function submitToFormspree() {
+                const formData = new FormData();
+                formData.append('name', document.getElementById('name').value);
+                formData.append('email', document.getElementById('email').value);
+                formData.append('subject', document.getElementById('subject').value);
+                formData.append('message', document.getElementById('message').value);
+                
+                try {
+                    const response = await fetch('https://formspree.io/f/xqalnvlq', {
+                        method: 'POST',
+                        body: formData,
+                        headers: {
+                            'Accept': 'application/json'
+                        }
+                    });
+                    
+                    if (response.ok) {
+                        return;
+                    } else {
+                        const errorData = await response.json();
+                        throw new Error(errorData.error || 'Form submission failed');
+                    }
+                } catch (error) {
+                    throw error;
+                }
+            }
+          
+        });

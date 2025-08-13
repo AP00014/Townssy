@@ -35,7 +35,7 @@
     <button class="youth-modal-close" id="closeYouthModal">×</button>
     <h2 class="youth-form-title">Join Our Youth Program</h2>
     
-    <form id="youthApplicationForm" action="https://formspree.io/f/YOUR_FORMSPREE_ID" method="POST">
+    <form id="youthApplicationForm" action="https://formspree.io/f/xqalnvlq" method="POST">
       <input type="hidden" name="_subject" value="New Youth Program Application">
       
       <div class="form-field">
@@ -390,73 +390,78 @@
     </section>
 
     <!-- Contact Section -->
-    <section id="contact">
-        <div class="container">
-            <h2 class="text-center animate-on-scroll">We'd Love to Hear from You!</h2>
-            <div class="contact-container">
-                <div class="contact-form animate-on-scroll">
-                    <form>
-                        <div class="form-group">
-                            <label for="name">Full Name</label>
-                            <input type="text" id="name" class="form-control" required>
+<section id="contact">
+    <div class="container">
+        <h2 class="text-center animate-on-scroll">We'd Love to Hear from You!</h2>
+        <div class="contact-container">
+            <div class="contact-form animate-on-scroll">
+                <form id="contactForm"  >
+                    <div class="form-group">
+                        <label for="name">Full Name</label>
+                        <input type="text" id="name" name="name" class="form-control" required minlength="2">
+                        <div class="error-message" id="name-error"></div>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email Address</label>
+                        <input type="email" id="email" name="email" class="form-control" required>
+                        <div class="error-message" id="email-error"></div>
+                    </div>
+                    <div class="form-group">
+                        <label for="subject">Subject</label>
+                        <select id="subject" name="subject" class="form-control" required>
+                            <option value="">Select a subject</option>
+                            <option value="vendor">Vendor Inquiry</option>
+                            <option value="customer">Customer Support</option>
+                            <option value="partnership">Partnership Opportunity</option>
+                            <option value="youth">Youth Empowerment Program</option>
+                            <option value="other">Other</option>
+                        </select>
+                        <div class="error-message" id="subject-error"></div>
+                    </div>
+                    <div class="form-group">
+                        <label for="message">Message</label>
+                        <textarea id="message" name="message" rows="5" class="form-control" required minlength="10"></textarea>
+                       <div class="error-message" id="message-error">Please enter a message (at least 10 characters)</div>
                         </div>
-                        <div class="form-group">
-                            <label for="email">Email Address</label>
-                            <input type="email" id="email" class="form-control" required>
+                    </div>
+                    <div id="form-status" class="form-status"></div>
+                    <button type="submit" class="btn btn-primary" id="submit-btn">Send Message</button>
+                </form>
+            </div>
+            <div class="contact-info animate-on-scroll" style="transition-delay: 0.2s">
+                <div class="contact-details">
+                    <div class="contact-item">
+                        <div class="contact-icon"><i class="fas fa-envelope"></i></div>
+                        <div>
+                            <h3>Email</h3>
+                            <p>townssy01@gmail.com</p>
                         </div>
-                        <div class="form-group">
-                            <label for="subject">Subject</label>
-                            <select id="subject" class="form-control" required>
-                                <option value="">Select a subject</option>
-                                <option value="vendor">Vendor Inquiry</option>
-                                <option value="customer">Customer Support</option>
-                                <option value="partnership">Partnership Opportunity</option>
-                                <option value="youth">Youth Empowerment Program</option>
-                                <option value="other">Other</option>
-                            </select>
+                    </div>
+                    <div class="contact-item">
+                        <div class="contact-icon"><i class="fas fa-phone"></i></div>
+                        <div>
+                            <h3>Phone</h3>
+                            <p>0257785088</p>
                         </div>
-                        <div class="form-group">
-                            <label for="message">Message</label>
-                            <textarea id="message" rows="5" class="form-control" required></textarea>
+                    </div>
+                    <div class="contact-item">
+                        <div class="contact-icon"><i class="fab fa-whatsapp"></i></div>
+                        <div>
+                            <h3>WhatsApp</h3>
+                            <p>+233 25 778 5088</p>
                         </div>
-                        <button type="submit" class="btn btn-primary">Send Message</button>
-                    </form>
-                </div>
-                <div class="contact-info animate-on-scroll" style="transition-delay: 0.2s">
-                    <div class="contact-details">
-                        <div class="contact-item">
-                            <div class="contact-icon"><i class="fas fa-envelope"></i></div>
-                            <div>
-                                <h3>Email</h3>
-                                <p>info@townssy.com</p>
-                            </div>
-                        </div>
-                        <div class="contact-item">
-                            <div class="contact-icon"><i class="fas fa-phone"></i></div>
-                            <div>
-                                <h3>Phone</h3>
-                                <p>0257785088</p>
-                            </div>
-                        </div>
-                        <div class="contact-item">
-                            <div class="contact-icon"><i class="fab fa-whatsapp"></i></div>
-                            <div>
-                                <h3>WhatsApp</h3>
-                                <p>+233 25 778 5088</p>
-                            </div>
-                        </div>
-                        <h3 style="margin-top: 2rem;">Connect With Us</h3>
-                        <div class="social-links">
-                            <a href="#" class="social-link"><i class="fab fa-facebook-f"></i></a>
-                            <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
-                            <a href="#" class="social-link"><i class="fab fa-whatsapp"></i></a>
-                        </div>
+                    </div>
+                    <h3 style="margin-top: 2rem;">Connect With Us</h3>
+                    <div class="social-links">
+                        <a href="#" class="social-link"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-whatsapp"></i></a>
                     </div>
                 </div>
             </div>
         </div>
-    </section>
-
+    </div>
+</section>
     <!-- Footer -->
     <footer>
         <div class="container">
