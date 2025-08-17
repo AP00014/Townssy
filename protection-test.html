@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Protection Test Page</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            line-height: 1.6;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            color: #333;
+        }
+        h1 {
+            color: #2c7a57;
+            border-bottom: 2px solid #2c7a57;
+            padding-bottom: 10px;
+        }
+        .test-section {
+            background: #f5f5f5;
+            padding: 15px;
+            margin-bottom: 20px;
+            border-radius: 5px;
+        }
+        .test-title {
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+        .test-description {
+            margin-bottom: 15px;
+        }
+        .test-button {
+            background: #2c7a57;
+            color: white;
+            border: none;
+            padding: 8px 15px;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        .test-button:hover {
+            background: #235c42;
+        }
+        .result {
+            margin-top: 10px;
+            font-style: italic;
+        }
+        .success {
+            color: green;
+        }
+        .failure {
+            color: red;
+        }
+    </style>
+</head>
+<body>
+    <h1>Townssy Protection Test Page</h1>
+    <p>This page tests the effectiveness of the protection measures implemented on the Townssy website.</p>
+    
+    <div class="test-section">
+        <div class="test-title">1. Right-Click Protection Test</div>
+        <div class="test-description">Try right-clicking anywhere on this page. The context menu should be blocked.</div>
+        <div class="result" id="right-click-result"></div>
+    </div>
+    
+    <div class="test-section">
+        <div class="test-title">2. Keyboard Shortcut Protection Test</div>
+        <div class="test-description">Try pressing F12, Ctrl+Shift+I, Ctrl+Shift+J, or Ctrl+U. These shortcuts should be blocked.</div>
+        <div class="result" id="keyboard-result"></div>
+    </div>
+    
+    <div class="test-section">
+        <div class="test-title">3. Text Selection Protection Test</div>
+        <div class="test-description">Try selecting text on this page. Text selection should be disabled.</div>
+        <div class="result" id="selection-result"></div>
+    </div>
+    
+    <div class="test-section">
+        <div class="test-title">4. DevTools Detection Test</div>
+        <div class="test-description">Open developer tools. The page should detect this and show a warning or redirect.</div>
+        <button class="test-button" id="devtools-test">Simulate DevTools Check</button>
+        <div class="result" id="devtools-result"></div>
+    </div>
+    
+    <div class="test-section">
+        <div class="test-title">5. Browser Compatibility Test</div>
+        <div class="test-description">This shows your current browser information and compatibility status.</div>
+        <button class="test-button" id="compatibility-test">Check Browser Compatibility</button>
+        <div class="result" id="compatibility-result"></div>
+    </div>
+    
+    <script>
+        // Right-click test
+        document.addEventListener('contextmenu', function(e) {
+            document.getElementById('right-click-result').innerHTML = '<span class="success">Success! Right-click was blocked.</span>';
+            setTimeout(() => {
+                document.getElementById('right-click-result').innerHTML = '';
+            }, 2000);
+        });
+        
+        // Keyboard test
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'F12' || 
+                (e.ctrlKey && e.shiftKey && (e.key === 'I' || e.key === 'i' || e.key === 'J' || e.key === 'j')) ||
+                (e.ctrlKey && (e.key === 'U' || e.key === 'u'))) {
+                document.getElementById('keyboard-result').innerHTML = '<span class="success">Success! Keyboard shortcut was blocked.</span>';
+                setTimeout(() => {
+                    document.getElementById('keyboard-result').innerHTML = '';
+                }, 2000);
+            }
+        });
+        
+        // Selection test
+        document.addEventListener('selectionchange', function() {
+            if (window.getSelection().toString().length > 0) {
+                document.getElementById('selection-result').innerHTML = '<span class="failure">Failure! Text selection was not blocked.</span>';
+            } else {
+                document.getElementById('selection-result').innerHTML = '<span class="success">Success! Text selection was blocked.</span>';
+            }
+            setTimeout(() => {
+                document.getElementById('selection-result').innerHTML = '';
+            }, 2000);
+        });
+        
+        // DevTools test button
+        document.getElementById('devtools-test').addEventListener('click', function() {
+            const widthThreshold = window.outerWidth - window.innerWidth > 160;
+            const heightThreshold = window.outerHeight - window.innerHeight > 160;
+            
+            if (widthThreshold || heightThreshold) {
+                document.getElementById('devtools-result').innerHTML = '<span class="success">DevTools detected! Protection is working.</span>';
+            } else {
+                document.getElementById('devtools-result').innerHTML = '<span class="success">DevTools not detected. Protection is ready.</span>';
+            }
+        });
+        
+        // Browser compatibility test
+        document.getElementById('compatibility-test').addEventListener('click', function() {
+            const ua = navigator.userAgent;
+            const browserInfo = `<strong>User Agent:</strong> ${ua}<br>`;
+            const isIOS = /iPad|iPhone|iPod/.test(ua) && !window.MSStream;
+            const isSafari = /^((?!chrome|android).)*safari/i.test(ua);
+            const isFirefox = ua.toLowerCase().indexOf('firefox') > -1;
+            const isChrome = ua.toLowerCase().indexOf('chrome') > -1 && !isSafari;
+            const isEdge = ua.toLowerCase().indexOf('edg') > -1;
+            const isIE = ua.toLowerCase().indexOf('trident') > -1;
+            
+            let compatibilityStatus = '<strong>Compatibility Status:</strong><br>';
+            compatibilityStatus += isIOS ? '✓ iOS-specific fixes applied<br>' : '';
+            compatibilityStatus += isSafari ? '✓ Safari-specific fixes applied<br>' : '';
+            compatibilityStatus += isFirefox ? '✓ Firefox-specific fixes applied<br>' : '';
+            compatibilityStatus += isChrome ? '✓ Chrome-specific fixes applied<br>' : '';
+            compatibilityStatus += isEdge ? '✓ Edge-specific fixes applied<br>' : '';
+            compatibilityStatus += isIE ? '✓ Internet Explorer-specific fixes applied<br>' : '';
+            
+            document.getElementById('compatibility-result').innerHTML = browserInfo + compatibilityStatus;
+        });
+    </script>
+    
+    <!-- Include all protection scripts -->
+    <script src="./scripts/protection.js"></script>
+    <script src="./scripts/browser-compatibility.js"></script>
+    <script src="./scripts/obfuscation.js"></script>
+</body>
+</html>

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" dir="ltr" itemscope itemtype="http://schema.org/WebPage">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -9,27 +9,106 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick-theme.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&family=Montserrat:wght@700;800;900&display=swap" rel="stylesheet">
 
-     <!-- Meta Properties -->
-    <meta name="description" content="Townssy - Empowering Local Commerce in Ghana. Discover local products, support vendors, and explore youth empowerment opportunities.">
-    <meta name="keywords" content="local commerce, Ghana, vendors, customers, youth empowerment, Bolgatanga, shopping, community, products, services">
+     <!-- Enhanced SEO Meta Properties -->
+    <meta name="description" content="Townssy - Empowering Local Commerce in Ghana. Discover local products, support vendors, and explore youth empowerment opportunities in Bolgatanga and beyond.">
+    <meta name="keywords" content="local commerce, Ghana, vendors, customers, youth empowerment, Bolgatanga, shopping, community, products, services, marketplace, local business, artisans, handmade crafts, delivery">
     <meta name="author" content="Townssy">
+    <meta name="robots" content="index, follow">
+    <meta name="language" content="English">
+    <meta name="revisit-after" content="7 days">
+    <meta name="geo.region" content="GH">
+    <meta name="geo.placename" content="Bolgatanga">
     
     <!-- Open Graph / Facebook -->
-    <meta property="og:title" content="Townssy - Empowering Local Commerce">
-    <meta property="og:description" content="Discover local products, support vendors, and explore youth empowerment opportunities in Ghana.">
-    <meta property="og:image" content="./images/img-20250629-WA0002"> <!-- Replace with your actual logo URL -->
+    <meta property="og:title" content="Townssy - Empowering Local Commerce in Ghana">
+    <meta property="og:description" content="Discover local products, support vendors, and explore youth empowerment opportunities in Ghana. Connect with trusted local businesses and artisans.">
+    <meta property="og:image" content="./images/IMG-20250629-WA0002.jpg"> <!-- Updated with correct path -->
     <meta property="og:url" content="https://www.townssy.com"> <!-- Replace with your actual website URL -->
     <meta property="og:type" content="website">
+    <meta property="og:site_name" content="Townssy">
+    <meta property="og:locale" content="en_US">
 
-<!-- Twitter -->
+    <!-- Twitter -->
     <meta property="twitter:card" content="summary_large_image">
-    <meta property="twitter:title" content="Townssy - Empowering Local Commerce">
-    <meta property="twitter:description" content="Discover local products, support vendors, and explore youth empowerment opportunities in Ghana.">
-    <meta property="twitter:image" content="./images/img-20250629-WA0002"> <!-- Replace with your actual logo URL -->
+    <meta property="twitter:title" content="Townssy - Empowering Local Commerce in Ghana">
+    <meta property="twitter:description" content="Discover local products, support vendors, and explore youth empowerment opportunities in Ghana. Connect with trusted local businesses.">
+    <meta property="twitter:image" content="./images/IMG-20250629-WA0002.jpg"> <!-- Updated with correct path -->
+    <meta property="twitter:site" content="@townssy">
+    
+    <!-- Structured Data for SEO -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Organization",
+      "name": "Townssy",
+      "url": "https://www.townssy.com",
+      "logo": "./images/IMG-20250629-WA0002.jpg",
+      "description": "Empowering Local Commerce in Ghana by connecting vendors with customers and supporting youth development.",
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Bolgatanga",
+        "addressRegion": "Upper East Region",
+        "addressCountry": "Ghana"
+      },
+      "contactPoint": {
+        "@type": "ContactPoint",
+        "telephone": "+233257785088",
+        "contactType": "customer service",
+        "email": "townssy01@gmail.com"
+      },
+      "sameAs": [
+        "https://www.facebook.com/profile.php/?id=61553991817227",
+        "https://www.youtube.com/@townssyintown",
+        "https://www.tiktok.com/@townssy"
+      ]
+    }
+    </script>
+    
+    <!-- Structured Data for Local Business -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "LocalBusiness",
+      "name": "Townssy",
+      "image": "./images/IMG-20250629-WA0002.jpg",
+      "priceRange": "₵₵",
+      "description": "Connecting local vendors with customers in Ghana and supporting youth empowerment initiatives.",
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Bolgatanga",
+        "addressRegion": "Upper East Region",
+        "addressCountry": "Ghana"
+      },
+      "geo": {
+        "@type": "GeoCoordinates",
+        "latitude": "10.7867",
+        "longitude": "-0.8486"
+      },
+      "telephone": "+233257785088",
+      "email": "townssy01@gmail.com"
+    }
+    </script>
     
 <link rel="icon" href="./images/IMG-20250629-WA0002.jpg" type="image/x-icon">
 
     <link rel="stylesheet" href="./styles/style.css">
+    <link rel="stylesheet" href="./styles/protection.css">
+    
+    <!-- Additional security measures -->
+    <style>
+        /* Prevent inspection and selection */
+        body {
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
+        }
+        
+        /* Apply protection to all content */
+        .protected-content {
+            position: relative;
+        }
+    </style>
 
 </head>
 <body>
@@ -126,43 +205,109 @@
 
 
     
-    <!-- Header with Mobile Menu -->
+    <!-- Header with Advanced Mobile Menu -->
     <header id="header">
         <div class="container navbar">
-            <a href="#" class="logo"><i class="fas fa-store"></i> Townssy</a>
+            <a href="#" class="logo" aria-label="Townssy Homepage">
+                <i class="fas fa-store" aria-hidden="true"></i> 
+                <span>Townssy</span>
+            </a>
             
             <!-- Desktop Navigation -->
-            <ul class="nav-links">
-                <li><a href="#hero">Home</a></li>
-                <li><a href="#features">Features</a></li>
-                <li><a href="#testimonials">Testimonials</a></li>
-                <li><a href="#how-it-works">How It Works</a></li>
-                <li><a href="#for-vendors">For Vendors</a></li>
-                <li><a href="#for-customers">For Customers</a></li>
-                <li><a href="#youth-empowerment">Youth</a></li>
-            </ul>
+            <nav aria-label="Main Navigation">
+                <ul class="nav-links">
+                    <li><a href="#hero"><i class="fas fa-home" aria-hidden="true"></i> Home</a></li>
+                    <li><a href="#features"><i class="fas fa-star" aria-hidden="true"></i> Features</a></li>
+                    <li><a href="#testimonials"><i class="fas fa-quote-right" aria-hidden="true"></i> Testimonials</a></li>
+                    <li><a href="#how-it-works"><i class="fas fa-question-circle" aria-hidden="true"></i> How It Works</a></li>
+                    <li><a href="#for-vendors"><i class="fas fa-store" aria-hidden="true"></i> For Vendors</a></li>
+                    <li><a href="#for-customers"><i class="fas fa-shopping-cart" aria-hidden="true"></i> For Customers</a></li>
+                    <li><a href="#youth-empowerment"><i class="fas fa-users" aria-hidden="true"></i> Youth</a></li>
+                   
+                </ul>
+            </nav>
             
-            <!-- Mobile Menu Button -->
-            <div class="hamburger" id="hamburger">
+            <!-- Mobile Menu Button with Animation -->
+            <button class="hamburger" id="hamburger" aria-label="Toggle mobile menu" aria-expanded="false" aria-controls="mobileMenu">
                 <div class="line1"></div>
                 <div class="line2"></div>
                 <div class="line3"></div>
-            </div>
+                <span class="sr-only">Menu</span>
+            </button>
         </div>
         
-        <!-- Mobile Menu -->
-        <div class="mobile-menu" id="mobileMenu">
-            <ul>
-                <li><a href="#hero">Home</a></li>
-                <li><a href="#features">Features</a></li>
-                <li><a href="#testimonials">Testimonials</a></li>
-                <li><a href="#how-it-works">How It Works</a></li>
-                <li><a href="#for-vendors">For Vendors</a></li>
-                <li><a href="#for-customers">For Customers</a></li>
-                <li><a href="#youth-empowerment">Youth Program</a></li>
-                <li><a href="#contact">Contact</a></li>
-            </ul>
+        <!-- Enhanced Mobile Menu with Icons and Animations -->
+        <div class="mobile-menu" id="mobileMenu" aria-hidden="true">
+            <div class="mobile-menu-header">
+                <a href="#" class="mobile-logo" aria-label="Townssy Homepage">
+                    <i class="fas fa-store" aria-hidden="true"></i> Townssy
+                </a>
+                <button class="mobile-close" id="mobileClose" aria-label="Close mobile menu">
+                    <i class="fas fa-times" aria-hidden="true"></i>
+                </button>
+            </div>
+            <nav class="mobile-nav" aria-label="Mobile Navigation">
+                <ul>
+                    <li class="mobile-nav-item">
+                        <a href="#hero">
+                            <i class="fas fa-home" aria-hidden="true"></i>
+                            <span>Home</span>
+                        </a>
+                    </li>
+                    <li class="mobile-nav-item">
+                        <a href="#features">
+                            <i class="fas fa-star" aria-hidden="true"></i>
+                            <span>Features</span>
+                        </a>
+                    </li>
+                    <li class="mobile-nav-item">
+                        <a href="#testimonials">
+                            <i class="fas fa-quote-right" aria-hidden="true"></i>
+                            <span>Testimonials</span>
+                        </a>
+                    </li>
+                    <li class="mobile-nav-item">
+                        <a href="#how-it-works">
+                            <i class="fas fa-question-circle" aria-hidden="true"></i>
+                            <span>How It Works</span>
+                        </a>
+                    </li>
+                    <li class="mobile-nav-item">
+                        <a href="#for-vendors">
+                            <i class="fas fa-store" aria-hidden="true"></i>
+                            <span>For Vendors</span>
+                        </a>
+                    </li>
+                    <li class="mobile-nav-item">
+                        <a href="#for-customers">
+                            <i class="fas fa-shopping-cart" aria-hidden="true"></i>
+                            <span>For Customers</span>
+                        </a>
+                    </li>
+                    <li class="mobile-nav-item">
+                        <a href="#youth-empowerment">
+                            <i class="fas fa-users" aria-hidden="true"></i>
+                            <span>Youth Program</span>
+                        </a>
+                    </li>
+                    <li class="mobile-nav-item">
+                        <a href="#contact">
+                            <i class="fas fa-envelope" aria-hidden="true"></i>
+                            <span>Contact</span>
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+           
+            <div class="mobile-social">
+                <a href="https://www.facebook.com/profile.php/?id=61553991817227&mibextid=ZbWKwL" aria-label="Facebook" target="_blank"><i class="fab fa-facebook-f" aria-hidden="true"></i></a>
+                <a href="https://www.youtube.com/@townssyintown?si=_WN7cJc21XMCKZ2v" aria-label="YouTube" target="_blank"><i class="fab fa-youtube" aria-hidden="true"></i></a>
+                <a href="https://www.tiktok.com/@townssy" aria-label="TikTok" target="_blank"><i class="fab fa-tiktok" aria-hidden="true"></i></a>
+                <a href="https://wa.me/233257785088" aria-label="WhatsApp" target="_blank"><i class="fab fa-whatsapp" aria-hidden="true"></i></a>
+            </div>
         </div>
+        <!-- Mobile Menu Overlay -->
+        <div class="mobile-menu-overlay" id="mobileMenuOverlay"></div>
     </header>
 
      <!-- Decorative Elements -->
@@ -524,8 +669,87 @@
    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
     
+    <!-- Security and Protection Scripts -->
+    <script>
+        // Disable view source and other browser inspection methods
+        document.onkeydown = function(e) {
+            if(e.keyCode == 123) { // F12
+                return false;
+            }
+            if(e.ctrlKey && e.shiftKey && e.keyCode == 'I'.charCodeAt(0)) { // Ctrl+Shift+I
+                return false;
+            }
+            if(e.ctrlKey && e.shiftKey && e.keyCode == 'C'.charCodeAt(0)) { // Ctrl+Shift+C
+                return false;
+            }
+            if(e.ctrlKey && e.shiftKey && e.keyCode == 'J'.charCodeAt(0)) { // Ctrl+Shift+J
+                return false;
+            }
+            if(e.ctrlKey && e.keyCode == 'U'.charCodeAt(0)) { // Ctrl+U
+                return false;
+            }
+        };
+    </script>
+    
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.js"></script>
     <script src="./scripts/script.js"></script>
+    <script src="./scripts/protection.js"></script>
+    <script src="./scripts/browser-compatibility.js"></script>
+    <script src="./scripts/obfuscation.js"></script>
+    
+    <!-- Final layer of protection -->
+    <script>
+        // Disable browser developer tools
+        (function() {
+            // Store the original console methods
+            const originalConsole = {
+                log: console.log,
+                warn: console.warn,
+                error: console.error,
+                info: console.info,
+                debug: console.debug
+            };
+            
+            // Override console methods
+            console.log = console.warn = console.error = console.info = console.debug = function() {
+                originalConsole.warn('Console actions are monitored and logged.');
+            };
+            
+            // Detect when DevTools is opened
+            let devToolsOpened = false;
+            
+            function detectDevTools() {
+                const threshold = 160;
+                const widthThreshold = window.outerWidth - window.innerWidth > threshold;
+                const heightThreshold = window.outerHeight - window.innerHeight > threshold;
+                
+                if (widthThreshold || heightThreshold) {
+                    if (!devToolsOpened) {
+                        devToolsOpened = true;
+                        document.body.innerHTML = '<div style="text-align:center;padding:50px;font-family:sans-serif;"><h1>Access Denied</h1><p>For security reasons, developer tools are not allowed on this site.</p><p>Please close developer tools to continue browsing.</p></div>';
+                    }
+                } else {
+                    if (devToolsOpened) {
+                        window.location.reload();
+                    }
+                }
+            }
+            
+            // Check periodically
+            setInterval(detectDevTools, 1000);
+            
+            // Prevent page source viewing
+            document.addEventListener('keydown', function(e) {
+                // Ctrl+U, Ctrl+S
+                if ((e.ctrlKey && (e.keyCode === 85 || e.keyCode === 83)) ||
+                    // F12
+                    (e.keyCode === 123)) {
+                    e.preventDefault();
+                    return false;
+                }
+            });
+        })();
+    </script>
 </body>
 </html>

@@ -1,32 +1,94 @@
 
-        // Mobile menu toggle
+// Enhanced Mobile Menu Functionality
         const hamburger = document.getElementById('hamburger');
         const mobileMenu = document.getElementById('mobileMenu');
+        const mobileClose = document.getElementById('mobileClose');
+        const mobileMenuOverlay = document.getElementById('mobileMenuOverlay');
+        const mobileNavItems = document.querySelectorAll('.mobile-nav-item');
+        const body = document.body;
         
-        hamburger.addEventListener('click', () => {
-            hamburger.classList.toggle('active');
-            mobileMenu.classList.toggle('active');
+        // Set item index for staggered animation
+        mobileNavItems.forEach((item, index) => {
+            item.style.setProperty('--item-index', index);
+        });
+        
+        // Function to open mobile menu
+        function openMobileMenu() {
+            mobileMenu.classList.add('active');
+            mobileMenuOverlay.classList.add('active');
+            hamburger.setAttribute('aria-expanded', 'true');
+            mobileMenu.setAttribute('aria-hidden', 'false');
+            body.style.overflow = 'hidden'; // Prevent scrolling
             
-            // Toggle hamburger animation
-            if (hamburger.classList.contains('active')) {
-                hamburger.querySelector('.line1').style.transform = 'rotate(-45deg) translate(-5px, 6px)';
-                hamburger.querySelector('.line2').style.opacity = '0';
-                hamburger.querySelector('.line3').style.transform = 'rotate(45deg) translate(-5px, -6px)';
+            // Animate hamburger
+            hamburger.querySelector('.line1').style.transform = 'rotate(-45deg) translate(-5px, 6px)';
+            hamburger.querySelector('.line2').style.opacity = '0';
+            hamburger.querySelector('.line3').style.transform = 'rotate(45deg) translate(-5px, -6px)';
+            
+            // Focus trap for accessibility
+            setTimeout(() => {
+                mobileClose.focus();
+            }, 100);
+        }
+        
+        // Function to close mobile menu
+        function closeMobileMenu() {
+            mobileMenu.classList.remove('active');
+            mobileMenuOverlay.classList.remove('active');
+            hamburger.setAttribute('aria-expanded', 'false');
+            mobileMenu.setAttribute('aria-hidden', 'true');
+            body.style.overflow = ''; // Restore scrolling
+            
+            // Reset hamburger
+            hamburger.querySelector('.line1').style.transform = 'none';
+            hamburger.querySelector('.line2').style.opacity = '1';
+            hamburger.querySelector('.line3').style.transform = 'none';
+            
+            // Return focus to hamburger for accessibility
+            setTimeout(() => {
+                hamburger.focus();
+            }, 100);
+        }
+        
+        // Toggle mobile menu
+        hamburger.addEventListener('click', () => {
+            if (mobileMenu.classList.contains('active')) {
+                closeMobileMenu();
             } else {
-                hamburger.querySelector('.line1').style.transform = 'none';
-                hamburger.querySelector('.line2').style.opacity = '1';
-                hamburger.querySelector('.line3').style.transform = 'none';
+                openMobileMenu();
             }
         });
         
+        // Close menu with close button
+        mobileClose.addEventListener('click', closeMobileMenu);
+        
+        // Close menu when clicking overlay
+        mobileMenuOverlay.addEventListener('click', closeMobileMenu);
+        
         // Close menu when clicking a link
-        document.querySelectorAll('.mobile-menu a').forEach(link => {
+        document.querySelectorAll('.mobile-nav-item a').forEach(link => {
             link.addEventListener('click', () => {
-                mobileMenu.classList.remove('active');
-                hamburger.classList.remove('active');
-                hamburger.querySelector('.line1').style.transform = 'none';
-                hamburger.querySelector('.line2').style.opacity = '1';
-                hamburger.querySelector('.line3').style.transform = 'none';
+                closeMobileMenu();
+            });
+        });
+        
+        // Close menu with Escape key
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && mobileMenu.classList.contains('active')) {
+                closeMobileMenu();
+            }
+        });
+        
+        // Add hover effect to mobile nav items
+        mobileNavItems.forEach(item => {
+            const icon = item.querySelector('i');
+            
+            item.addEventListener('mouseenter', () => {
+                icon.style.transform = 'scale(1.2)';
+            });
+            
+            item.addEventListener('mouseleave', () => {
+                icon.style.transform = 'scale(1)';
             });
         });
         
