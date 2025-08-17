@@ -461,7 +461,7 @@ const products = [
         verified: true,
         category: "electronics",
         location: "Bolgatanga",
-        type: "supplier4",
+        type: "supplier",
          images: [
             "https://tonaton.com/r/cGljdHVyZXMtZ2hhbmEuamlqaXN0YXRpYy5uZXQ/48517499_MzAwLTMwMC0zZWUwODkwYjVl.webp",
             "https://gh.jumia.is/unsafe/fit-in/500x500/filters:fill(white)/product/96/30345/1.jpg?9774",
@@ -485,7 +485,7 @@ const products = [
         verified: true,
         category: "electronics",
         location: "Bolgatanga",
-        type: "supplier4",
+        type: "supplier",
          images: [
             "https://kids.kiddle.co/images/thumb/a/a4/Computer_monitor.jpg/300px-Computer_monitor.jpg",
             "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTIH1RTanuVfdRXTivfN54k-Y5nUisPRatT1w&s",
@@ -510,7 +510,7 @@ const products = [
         verified: true,
         category: "electronics",
         location: "Bolgatanga",
-        type: "supplier4",
+        type: "supplier",
          images: [
             "https://cdn.mos.cms.futurecdn.net/4ohzXW2UdqpXoiTduBM7Dc-1200-80.jpg",
             "https://i.pcmag.com/imagery/reviews/03iakpnFyujfWLKIxJ8Ui1M-1..v1705421237.jpg",
@@ -534,7 +534,7 @@ const products = [
         verified: true,
         category: "electronics",
         location: "Bolgatanga",
-        type: "supplier4",
+        type: "supplier",
          images: [
             "https://m.media-amazon.com/images/I/617iKc8AcZL._AC_SL1500_.jpg",
             "https://static.independent.co.uk/2023/01/10/16/Corsair%20katar%20elite%20wireless%20gaming%20mouse.jpg",
@@ -558,7 +558,7 @@ const products = [
         verified: true,
         category: "electronics",
         location: "Bolgatanga",
-        type: "supplier4",
+        type: "supplier" ,
          images: [
             "https://m.media-amazon.com/images/I/71y4ZSCnkPL._UF350,350_QL50_.jpg",
             "https://img.freepik.com/premium-photo/computer-system-unit_253658-1881.jpg",
@@ -582,7 +582,7 @@ const products = [
         verified: true,
         category: "electronics",
         location: "Bolgatanga",
-        type: "supplier4",
+        type: "supplier",
          images: [
             "https://diamondenergygh.com/wp-content/uploads/2021/12/13A-Double-socket-USB-universal-soocket-outlet-neon-light-Diamond-Energy-Ghana-Dyson.jpg",
             "https://supplymaster.store/cdn/shop/collections/saudi-arabia-alfanar-electric-switches-sockets-ranges.jpg?v=1623420481&width=1296",
@@ -607,7 +607,7 @@ const products = [
         verified: true,
         category: "electronics",
         location: "Bolgatanga",
-        type: "supplier4",
+        type: "supplier",
          image: "../images/IMG-20250807-WA0015.jpg"
     },
      {
@@ -624,7 +624,7 @@ const products = [
         verified: true,
         category: "electronics",
         location: "Bolgatanga",
-        type: "supplier4",
+        type: "supplier",
          images: [
             "https://ng.jumia.is/unsafe/fit-in/500x500/filters:fill(white)/product/38/4250883/1.jpg?1506",
             "https://supplymaster.store/cdn/shop/collections/saudi-arabia-alfanar-electric-switches-sockets-ranges.jpg?v=1623420481&width=1296",
@@ -648,7 +648,7 @@ const products = [
         verified: true,
         category: "electronics",
         location: "Bolgatanga",
-        type: "supplier4",
+        type: "supplier",
          images: [
             "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQuANgsTrQGzCHaJdWoSJUPJreo6ODSmK_Eag&s",
             "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQTRaNUD8fzxaV1Alela2SiKVJhxL88M4AJ4g&s",
@@ -672,7 +672,7 @@ const products = [
         verified: true,
         category: "electronics",
         location: "Bolgatanga",
-        type: "supplier4",
+        type: "supplier",
          images: [
             "../images/IMG-20250807-WA0017.jpg",
             "../images/IMG-20250807-WA0014.jpg",
@@ -697,7 +697,7 @@ const products = [
         verified: true,
         category: "electronics",
         location: "Bolgatanga",
-        type: "supplier4",
+        type: "supplier",
          images: [
             "https://www.shutterstock.com/image-vector/tricycle-vector-template-design-white-600nw-2453583247.jpg",
             "https://www.dayangmoto.com/uploads/202331172/three-wheel-cargo-moto5df5f49c-07bc-4ac5-b337-9206ab1b34eb.jpg",
@@ -719,7 +719,7 @@ const products = [
         verified: true,
         category: "electronics",
         location: "Bolgatanga",
-        type: "supplier4",
+        type: "supplier",
          images: [
             "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSxPa1ybWs2xTsdv3uropWVPHtg0ZNUgJIl1A&s",
             "https://www.gzsamebike.com/wp-content/uploads/2024/09/Golden-Horse-e-bike-1024x683.webp",
@@ -742,7 +742,7 @@ const products = [
         verified: true,
         category: "electronics",
         location: "Bolgatanga",
-        type: "supplier4",
+        type: "supplier",
          images: [
             "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS4h-smyRsi5fyNCfTWBQAMHa08MvSVobmwWQ&s",
             "https://daikinacsolutionsplaza.com/blog/wp-content/uploads/2023/04/image-6.png",
@@ -756,8 +756,8 @@ const products = [
         name: "Smart TV's",
         description: "High-quality electrical accessories",
         price: 1200,
-        minPrice:1,200,
-        maxPrice: 9,999,
+        minPrice:1200,
+        maxPrice: 9999,
         specs: ["Safety certified", "Multiple designs", "USB ports available", "Easy installation"],
         minOrder: 1,
         shipping: "delivery",
@@ -765,7 +765,7 @@ const products = [
         verified: true,
         category: "electronics",
         location: "Bolgatanga",
-        type: "supplier4",
+        type: "supplier",
          images: [
             "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR-PSBG6r7cyjsEvTCEmMxvGs6txs34ULjpJQ&s",
             "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTdHBSXxgH_Y5lW2NXIGlzao-7A5DD3dkoUaQ&s",
@@ -788,7 +788,7 @@ const products = [
         verified: true,
         category: "electronics",
         location: "Bolgatanga",
-        type: "supplier4",
+        type: "supplier",
          images: [
             "https://i0.wp.com/jachete.ci/wp-content/uploads/2024/01/46641751_189407325331446_2124200273806098432_n.jpeg?fit=560%2C560&ssl=1",
             "https://5.imimg.com/data5/ANDROID/Default/2024/9/447737638/CA/EO/JQ/194420517/product-jpeg-500x500.jpg",
@@ -811,7 +811,7 @@ const products = [
         verified: true,
         category: "electronics",
         location: "Bolgatanga",
-        type: "supplier4",
+        type: "supplier",
          images: [
             "https://milakitchen.com/cdn/shop/files/mi_1.jpg?v=1731895551",
             "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR1oxqOEBEcXVnOWzR9X1PAlbTkt0kmqcbedA&s",
@@ -857,7 +857,7 @@ const products = [
         verified: true,
         category: "electronics",
         location: "Bolgatanga",
-        type: "supplier4",
+        type: "supplier",
          images: [
             "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSfkfg5HDu9OSk4dXpd8fDpaxr2QIeya3VO8w&s",
             "https://whirlpoolindia.vtexassets.com/arquivos/ids/164386/Xpert-care-Silver-lid-open-O3-6.5kg_1500x1500.jpg?v=638731267672600000",
@@ -880,7 +880,7 @@ const products = [
         verified: true,
         category: "electronics",
         location: "Bolgatanga",
-        type: "supplier4",
+        type: "supplier",
          images: [
             "https://gh.jumia.is/unsafe/fit-in/500x500/filters:fill(white)/product/09/6141192/1.jpg?1801",
             "https://images-cdn.ubuy.co.in/647784b5542ef615b126deda-bose-smart-soundbar-900-with-bass-module.jpg",
