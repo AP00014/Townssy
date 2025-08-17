@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Townssy Marketplace - Products & Services</title>
+      <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Roboto:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+   <link rel="stylesheet" href="./style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+    <link rel="icon" href="./favicon.ico" type="image/x-icon">
+    <meta name="description" content="Explore a wide range of products and professional services on Townssy Marketplace. Connect with trusted suppliers and service providers.">
+    <meta name="keywords" content="Townssy, Marketplace, Products, Services, Ghana, Buy, Sell, Online Shopping">
+    <meta name="author" content="Townssy Team">
+    <meta property="og:title" content="Townssy Marketplace - Products & Services">
+    <meta property="og:description" content="Explore a wide range of products and professional services on Townssy Marketplace. Connect with trusted suppliers and service providers.">
+    <meta property="og:image" content="https://www.townssy.com/logo.png">
+</head>
+<body>
+    <!-- Header Section -->
+    <header>
+        <div class="top-header">
+            <div class="container top-header-container">
+                <div class="banner-buttons">
+                    <a href="https://wa.me/233257785088?text=Hello%20Townssy%20consultant,%20I%20need%20assistance" 
+                       class="btn btn-primary" 
+                       style="flex: 1 1 auto; min-width: max-content; white-space: nowrap;">
+                        <i class="fab fa-whatsapp"></i> Chat with Consultant
+                    </a>
+                </div>
+            </div>
+        </div>
+        
+        <div class="container">
+            <div class="main-header">
+                
+               
+                <div class="nav-tabs">
+                    <div class="nav-tab active" data-tab="products">Products</div>
+                    <div class="nav-tab" data-tab="services">Services</div>
+                </div>
+                
+                <div class="user-actions">
+                    <div class="filter-icon" id="open-filters">
+                        <i class="fas fa-filter"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+    
+    <div class="container">
+        <!-- Notice Banner -->
+        <div class="notice-banner">
+            <i class="fas fa-exclamation-circle"></i>
+            Note: All transactions occur directly between buyers and sellers. No payments are processed on this platform.
+        </div>
+        
+        <!-- Main Content -->
+        <div class="main-content">
+            <!-- Products Section -->
+            <section class="products-section active-section" id="products-section">
+                <div class="section-header">
+                    <h2>Featured Products</h2>
+                    <div class="sort-options">
+                        <select id="product-sort">
+                            <option value="featured">Sort by: Featured</option>
+                            <option value="price-low">Price: Low to High</option>
+                            <option value="price-high">Price: High to Low</option>
+                            <option value="newest">Newest First</option>
+                        </select>
+                    </div>
+                </div>
+                
+                <div class="products-grid" id="products-container">
+                    <!-- Products will be dynamically inserted here -->
+                </div>
+                <div class="pagination-container">
+                    <div class="pagination">
+                        <button class="page-btn prev-btn" disabled>
+                            <i class="fas fa-chevron-left"></i> Previous
+                        </button>
+                        <div class="page-numbers" id="page-numbers">
+                            <!-- Page numbers will be dynamically inserted here -->
+                        </div>
+                        <button class="page-btn next-btn">
+                            Next <i class="fas fa-chevron-right"></i>
+                        </button>
+                    </div>
+                </div>
+            </section>
+            
+            <!-- Services Section -->
+            <section class="services-section" id="services-section">
+                <div class="section-header">
+                    <h2>Professional Services</h2>
+                    <div class="categories-dropdown">
+                        <div class="dropdown-icon" id="categories-dropdown-toggle">
+                            <i class="fas fa-th-large"></i>
+                            <span>Categories</span>
+                        </div>
+                        <div class="dropdown-content" id="categories-dropdown-content">
+                            <!-- Service categories will be dynamically inserted here -->
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="services-grid" id="services-container">
+                    <!-- Services will be dynamically inserted here -->
+                </div>
+            </section>
+        </div>
+    </div>
+    
+    <!-- Filters Modal -->
+    <div class="filters-modal" id="filters-modal">
+        <div class="filters-container">
+            <div class="modal-header">
+                <h3>Filter Options</h3>
+                <button class="close-modal" id="close-filters">&times;</button>
+            </div>
+            
+            <div class="filter-section">
+                <h4>Categories</h4>
+                <div class="filter-options" id="category-filter">
+                    <!-- Category filters will be dynamically inserted here -->
+                </div>
+            </div>
+            
+            <div class="filter-section">
+                <h4>Price Range (₵)</h4>
+                <div class="price-range">
+                    <input type="number" id="min-price" placeholder="Min" min="0">
+                    <input type="number" id="max-price" placeholder="Max" min="0">
+                </div>
+                <div class="filter-buttons">
+                    <button class="apply-btn" id="apply-price">Apply Price</button>
+                    <button class="reset-btn" id="reset-price">Reset</button>
+                </div>
+            </div>
+            
+            <div class="filter-section">
+                <h4>Location</h4>
+                <div class="filter-options" id="location-filter">
+                    <!-- Location filters will be dynamically inserted here -->
+                </div>
+            </div>
+            
+            <div class="filter-section">
+                <h4>Supplier Type</h4>
+                <div class="filter-options" id="type-filter">
+                    <!-- Type filters will be dynamically inserted here -->
+                </div>
+            </div>
+            
+            <div class="filter-buttons" style="margin-top: 20px;">
+                <button class="apply-btn" style="flex: 2;">Apply Filters</button>
+                <button class="reset-btn">Reset All</button>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3>About Townssy</h3>
+                    <p>Connecting buyers with trusted suppliers and service providers. Our platform makes commerce easier and more reliable.</p>
+                    <div class="social-links" style="margin-top: 20px;">
+ <a href="https://www.facebook.com/profile.php/?id=61553991817227&mibextid=ZbWKwL" class="social-link"><i class="fab fa-facebook-f"></i></a>
+                        <a href="https://www.youtube.com/@townssyintown?si=_WN7cJc21XMCKZ2v" class="social-link"><i class="fab fa-youtube"></i></a>
+                        <a href="https://www.tiktok.com/@townssy" class="social-link"><i class="fab fa-tiktok"></i></a>
+                        <a href="https://wa.me/233257785088" class="social-link"><i class="fab fa-whatsapp"></i></a>
+                 
+                    </div>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Products</h3>
+                    <ul class="footer-links">
+                        <li><a href="#"><i class="fas fa-chevron-right"></i> Electronics</a></li>
+                        <li><a href="#"><i class="fas fa-chevron-right"></i> Home & Garden</a></li>
+                        <li><a href="#"><i class="fas fa-chevron-right"></i> Apparel</a></li>
+                        <li><a href="#"><i class="fas fa-chevron-right"></i> Machinery</a></li>
+                        <li><a href="#"><i class="fas fa-chevron-right"></i> Beauty & Personal Care</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Services</h3>
+                    <ul class="footer-links">
+                        <li><a href="#"><i class="fas fa-chevron-right"></i> Design & Creative</a></li>
+                        <li><a href="#"><i class="fas fa-chevron-right"></i> Digital Marketing</a></li>
+                        <li><a href="#"><i class="fas fa-chevron-right"></i> Writing & Translation</a></li>
+                        <li><a href="#"><i class="fas fa-chevron-right"></i> Programming & Tech</a></li>
+                        <li><a href="#"><i class="fas fa-chevron-right"></i> Business Consulting</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Contact Us</h3>
+                    <ul class="footer-links">
+                        <li><a href="https://maps.app.goo.gl/FMgCraBBJ6PnpXPr8"><i class="fas fa-map-marker-alt"></i>Bolgatanga, Ghana</a></li>
+                        <li><a href="tel:+233257785088"><i class="fas fa-phone"></i> +233 25 778 5088</a></li>
+                        <li><a href="mailto:info@townssy.com"><i class="fas fa-envelope"></i> info@townssy.com</a></li>
+                        <li><a href="https://wa.me/233257785088"><i class="fab fa-whatsapp"></i> WhatsApp Support</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="copyright">
+                <p>&copy; 2023 Townssy Marketplace. All rights reserved. | Connecting Global Buyers and Providers</p>
+            </div>
+        </div>
+    </footer>
+
+   <script src="./script.js"></script>
+</body>
+</html>
