@@ -19,7 +19,7 @@ const products = [
         images: [
             "../images/IMG-20250704-WA0074.jpg",
             "../images/IMG-20250704-WA0080.jpg",
-            "../images/IMG-20250704-WA0101.jpg"
+            "https://media3.bosch-home.com/Images/400x300/20281406_Bosch-Blender-Range_Keyvisual_Global_VitaPower-1600x1200.jpg"
         ]
     },
     {
@@ -256,7 +256,7 @@ const products = [
         images: [
             "../images/IMG-20250704-WA0075.jpg",
             "../images/IMG-20250704-WA0089.jpg",
-            "../images/IMG-20250810-WA0017.jpg",
+            "https://upfrica-production.s3.eu-west-2.amazonaws.com/92vkegjvhlxg1petrisc6mc8qnx8",
         ]
     },
     {
