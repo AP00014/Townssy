@@ -19,7 +19,7 @@ const products = [
         images: [
             "../images/IMG-20250704-WA0074.jpg",
             "../images/IMG-20250704-WA0080.jpg",
-            "https://media3.bosch-home.com/Images/400x300/20281406_Bosch-Blender-Range_Keyvisual_Global_VitaPower-1600x1200.jpg"
+            "../images/IMG-20250704-WA0101.jpg"
         ]
     },
     {
@@ -41,6 +41,9 @@ const products = [
         images: [
             "../images/IMG-20250704-WA0079.jpg",
             "../images/IMG-20250704-WA0091.jpg",
+            "https://media3.bosch-home.com/Images/400x300/20281406_Bosch-Blender-Range_Keyvisual_Global_VitaPower-1600x1200.jpg",
+            "https://m.media-amazon.com/images/I/61eb0fFwHaL.jpg",
+            "https://gh.jumia.is/unsafe/fit-in/500x500/filters:fill(white)/product/66/1292342/1.jpg?8989"
         ]
     },
     {
@@ -627,7 +630,7 @@ const products = [
         type: "supplier",
          images: [
             "https://ng.jumia.is/unsafe/fit-in/500x500/filters:fill(white)/product/38/4250883/1.jpg?1506",
-            "https://supplymaster.store/cdn/shop/collections/saudi-arabia-alfanar-electric-switches-sockets-ranges.jpg?v=1623420481&width=1296",
+         
             "https://i.ebayimg.com/images/g/8~wAAOSw7XFlpku-/s-l400.jpg",
             "https://s.alicdn.com/@sc04/kf/H44f74ba5cb3f4494b36a3751895e4d1dA.jpeg_300x300.jpg",
            
@@ -677,10 +680,8 @@ const products = [
             "../images/IMG-20250807-WA0017.jpg",
             "../images/IMG-20250807-WA0014.jpg",
             "../images/IMG-20250807-WA0016.jpg",
-            "../images/IMG-20250807-WA0013.jpg",
-            ""
-           
-
+            "../images/IMG-20250807-WA0024.jpg",
+       
         ]
     },
      {
@@ -724,8 +725,8 @@ const products = [
             "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSxPa1ybWs2xTsdv3uropWVPHtg0ZNUgJIl1A&s",
             "https://www.gzsamebike.com/wp-content/uploads/2024/09/Golden-Horse-e-bike-1024x683.webp",
             "https://images-cdn.ubuy.ae/64086d71b18ced3d4f1fd583-1000w-electric-scooter.jpg",
-            "../images/IMG-20250807-WA0013.jpg",
-            ""
+            "https://fanttik.com/cdn/shop/files/05_971192c2-a4db-4e9d-83fb-f24248058232.jpg?v=1715668577&width=1600",
+            "https://www.ubuy.com.gh/productimg/?image=aHR0cHM6Ly9tLm1lZGlhLWFtYXpvbi5jb20vaW1hZ2VzL0kvNTFNc1c1UzZFeUwuX0FDX1NMMTUwMF8uanBn.jpg"
         ]
     },
      {
@@ -1017,6 +1018,90 @@ const resetAllBtn = document.querySelector('.filter-buttons .reset-btn');
 const categoriesDropdownToggle = document.getElementById('categories-dropdown-toggle');
 const categoriesDropdown = document.querySelector('.categories-dropdown');
 
+// User Activity Tracking
+const userActivity = {
+    viewedProducts: [],
+    searchHistory: [],
+    filterHistory: [],
+    lastVisit: null
+};
+
+// Load user activity from localStorage
+function loadUserActivity() {
+    const savedActivity = localStorage.getItem('userActivity');
+    if (savedActivity) {
+        const parsedActivity = JSON.parse(savedActivity);
+        Object.assign(userActivity, parsedActivity);
+    }
+    userActivity.lastVisit = new Date().toISOString();
+    saveUserActivity();
+}
+
+// Save user activity to localStorage
+function saveUserActivity() {
+    localStorage.setItem('userActivity', JSON.stringify(userActivity));
+}
+
+// Track product view
+function trackProductView(productId) {
+    const product = products.find(p => p.id === productId);
+    if (!product) return;
+    
+    // Check if product is already in viewedProducts
+    const existingIndex = userActivity.viewedProducts.findIndex(p => p.id === productId);
+    
+    if (existingIndex !== -1) {
+        // Move to the beginning of the array (most recent)
+        userActivity.viewedProducts.splice(existingIndex, 1);
+    }
+    
+    // Add product to the beginning of viewedProducts
+    userActivity.viewedProducts.unshift({
+        id: product.id,
+        name: product.name,
+        timestamp: new Date().toISOString()
+    });
+    
+    // Keep only the 20 most recent viewed products
+    if (userActivity.viewedProducts.length > 20) {
+        userActivity.viewedProducts = userActivity.viewedProducts.slice(0, 20);
+    }
+    
+    saveUserActivity();
+}
+
+// Track search query
+function trackSearch(query) {
+    if (!query) return;
+    
+    userActivity.searchHistory.unshift({
+        query: query,
+        timestamp: new Date().toISOString()
+    });
+    
+    // Keep only the 10 most recent searches
+    if (userActivity.searchHistory.length > 10) {
+        userActivity.searchHistory = userActivity.searchHistory.slice(0, 10);
+    }
+    
+    saveUserActivity();
+}
+
+// Track filter usage
+function trackFilterUsage(filters) {
+    userActivity.filterHistory.unshift({
+        filters: {...filters},
+        timestamp: new Date().toISOString()
+    });
+    
+    // Keep only the 10 most recent filter combinations
+    if (userActivity.filterHistory.length > 10) {
+        userActivity.filterHistory = userActivity.filterHistory.slice(0, 10);
+    }
+    
+    saveUserActivity();
+}
+
 // Current filters
 let currentFilters = {
     category: [],
@@ -1039,13 +1124,21 @@ function initPage() {
     // Clear any stored page number to ensure we always start at page 1
     localStorage.removeItem('currentPage');
     
+    // Load user activity from localStorage
+    loadUserActivity();
+    
+    // No longer auto-applying last used filters
+    
     filteredProducts = [...products];
-    renderProducts(filteredProducts);
+    applyFilters(); // Apply default filters
     renderServices(services);
     renderFilterOptions();
     renderServiceCategories();
     setupEventListeners();
     setupScrollToTop();
+    
+    // Render recently viewed products if available
+    renderRecentlyViewed();
     
     // Always scroll to top on initial load
     window.scrollTo(0, 0);
@@ -1076,9 +1169,6 @@ function renderProducts(productsArray) {
         if (product.images && product.images.length > 0) {
             sliderHTML = `
                 <div class="product-slider">
-                    <div class="auto-slide-indicator">
-                        <i class="fas fa-sync-alt"></i> Auto
-                    </div>
                     <div class="slider-container">
                         ${product.images.map(img => `
                             <img src="${img}" alt="${product.name}">

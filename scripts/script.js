@@ -1,95 +1,134 @@
 
 // Enhanced Mobile Menu Functionality
-        const hamburger = document.getElementById('hamburger');
-        const mobileMenu = document.getElementById('mobileMenu');
-        const mobileClose = document.getElementById('mobileClose');
-        const mobileMenuOverlay = document.getElementById('mobileMenuOverlay');
-        const mobileNavItems = document.querySelectorAll('.mobile-nav-item');
-        const body = document.body;
-        
-        // Set item index for staggered animation
-        mobileNavItems.forEach((item, index) => {
-            item.style.setProperty('--item-index', index);
-        });
-        
-        // Function to open mobile menu
-        function openMobileMenu() {
-            mobileMenu.classList.add('active');
-            mobileMenuOverlay.classList.add('active');
-            hamburger.setAttribute('aria-expanded', 'true');
-            mobileMenu.setAttribute('aria-hidden', 'false');
-            body.style.overflow = 'hidden'; // Prevent scrolling
+        document.addEventListener('DOMContentLoaded', function() {
+            const hamburger = document.getElementById('hamburger');
+            const mobileMenu = document.getElementById('mobileMenu');
+            const mobileClose = document.getElementById('mobileClose');
+            const mobileMenuOverlay = document.getElementById('mobileMenuOverlay');
+            const mobileNavItems = document.querySelectorAll('.mobile-nav-item');
+            const body = document.body;
             
-            // Animate hamburger
-            hamburger.querySelector('.line1').style.transform = 'rotate(-45deg) translate(-5px, 6px)';
-            hamburger.querySelector('.line2').style.opacity = '0';
-            hamburger.querySelector('.line3').style.transform = 'rotate(45deg) translate(-5px, -6px)';
-            
-            // Focus trap for accessibility
-            setTimeout(() => {
-                mobileClose.focus();
-            }, 100);
-        }
-        
-        // Function to close mobile menu
-        function closeMobileMenu() {
-            mobileMenu.classList.remove('active');
-            mobileMenuOverlay.classList.remove('active');
-            hamburger.setAttribute('aria-expanded', 'false');
-            mobileMenu.setAttribute('aria-hidden', 'true');
-            body.style.overflow = ''; // Restore scrolling
-            
-            // Reset hamburger
-            hamburger.querySelector('.line1').style.transform = 'none';
-            hamburger.querySelector('.line2').style.opacity = '1';
-            hamburger.querySelector('.line3').style.transform = 'none';
-            
-            // Return focus to hamburger for accessibility
-            setTimeout(() => {
-                hamburger.focus();
-            }, 100);
-        }
-        
-        // Toggle mobile menu
-        hamburger.addEventListener('click', () => {
-            if (mobileMenu.classList.contains('active')) {
-                closeMobileMenu();
-            } else {
-                openMobileMenu();
+            // Check if mobile menu elements exist
+            if (!hamburger || !mobileMenu || !mobileClose || !mobileMenuOverlay) {
+                console.log('Mobile menu elements not found');
+                return;
             }
-        });
-        
-        // Close menu with close button
-        mobileClose.addEventListener('click', closeMobileMenu);
-        
-        // Close menu when clicking overlay
-        mobileMenuOverlay.addEventListener('click', closeMobileMenu);
-        
-        // Close menu when clicking a link
-        document.querySelectorAll('.mobile-nav-item a').forEach(link => {
-            link.addEventListener('click', () => {
-                closeMobileMenu();
+            
+            // Set item index for staggered animation
+            mobileNavItems.forEach((item, index) => {
+                item.style.setProperty('--item-index', index);
             });
-        });
-        
-        // Close menu with Escape key
-        document.addEventListener('keydown', (e) => {
-            if (e.key === 'Escape' && mobileMenu.classList.contains('active')) {
-                closeMobileMenu();
+            
+            // Function to open mobile menu
+            function openMobileMenu() {
+                mobileMenu.classList.add('active');
+                mobileMenuOverlay.classList.add('active');
+                hamburger.setAttribute('aria-expanded', 'true');
+                mobileMenu.setAttribute('aria-hidden', 'false');
+                body.style.overflow = 'hidden'; // Prevent scrolling
+                
+                // Animate hamburger
+                hamburger.querySelector('.line1').style.transform = 'rotate(-45deg) translate(-5px, 6px)';
+                hamburger.querySelector('.line2').style.opacity = '0';
+                hamburger.querySelector('.line3').style.transform = 'rotate(45deg) translate(-5px, -6px)';
+                
+                // Focus trap for accessibility
+                setTimeout(() => {
+                    mobileClose.focus();
+                }, 100);
             }
+            
+            // Function to close mobile menu
+            function closeMobileMenu() {
+                mobileMenu.classList.remove('active');
+                mobileMenuOverlay.classList.remove('active');
+                hamburger.setAttribute('aria-expanded', 'false');
+                mobileMenu.setAttribute('aria-hidden', 'true');
+                body.style.overflow = ''; // Restore scrolling
+                
+                // Reset hamburger
+                hamburger.querySelector('.line1').style.transform = 'none';
+                hamburger.querySelector('.line2').style.opacity = '1';
+                hamburger.querySelector('.line3').style.transform = 'none';
+                
+                // Return focus to hamburger for accessibility
+                setTimeout(() => {
+                    hamburger.focus();
+                }, 100);
+            }
+            
+            // Toggle mobile menu
+            hamburger.addEventListener('click', () => {
+                if (mobileMenu.classList.contains('active')) {
+                    closeMobileMenu();
+                } else {
+                    openMobileMenu();
+                }
+            });
+            
+            // Close menu with close button
+            mobileClose.addEventListener('click', closeMobileMenu);
+            
+            // Close menu when clicking overlay
+            mobileMenuOverlay.addEventListener('click', closeMobileMenu);
         });
         
-        // Add hover effect to mobile nav items
-        mobileNavItems.forEach(item => {
-            const icon = item.querySelector('i');
+        // All mobile menu related functionality is now inside the DOMContentLoaded event handler above
+        
+        document.addEventListener('DOMContentLoaded', function() {
+            // Close menu when clicking a link
+            const mobileNavLinks = document.querySelectorAll('.mobile-nav-item a');
+            const mobileMenu = document.getElementById('mobileMenu');
             
-            item.addEventListener('mouseenter', () => {
-                icon.style.transform = 'scale(1.2)';
-            });
+            if (mobileNavLinks.length > 0 && mobileMenu) {
+                const closeMobileMenu = function() {
+                    mobileMenu.classList.remove('active');
+                    const mobileMenuOverlay = document.getElementById('mobileMenuOverlay');
+                    if (mobileMenuOverlay) {
+                        mobileMenuOverlay.classList.remove('active');
+                    }
+                    const hamburger = document.getElementById('hamburger');
+                    if (hamburger) {
+                        hamburger.setAttribute('aria-expanded', 'false');
+                        hamburger.querySelector('.line1').style.transform = 'none';
+                        hamburger.querySelector('.line2').style.opacity = '1';
+                        hamburger.querySelector('.line3').style.transform = 'none';
+                        setTimeout(() => {
+                            hamburger.focus();
+                        }, 100);
+                    }
+                    mobileMenu.setAttribute('aria-hidden', 'true');
+                    document.body.style.overflow = ''; // Restore scrolling
+                };
+                
+                mobileNavLinks.forEach(link => {
+                    link.addEventListener('click', closeMobileMenu);
+                });
+                
+                // Close menu with Escape key
+                document.addEventListener('keydown', (e) => {
+                    if (e.key === 'Escape' && mobileMenu.classList.contains('active')) {
+                        closeMobileMenu();
+                    }
+                });
+            }
             
-            item.addEventListener('mouseleave', () => {
-                icon.style.transform = 'scale(1)';
-            });
+            // Add hover effect to mobile nav items
+            const mobileNavItems = document.querySelectorAll('.mobile-nav-item');
+            if (mobileNavItems.length > 0) {
+                mobileNavItems.forEach(item => {
+                    const icon = item.querySelector('i');
+                    if (icon) {
+                        item.addEventListener('mouseenter', () => {
+                            icon.style.transform = 'scale(1.2)';
+                        });
+                        
+                        item.addEventListener('mouseleave', () => {
+                            icon.style.transform = 'scale(1)';
+                        });
+                    }
+                });
+            }
         });
         
         // Header scroll effect
@@ -165,26 +204,31 @@
         });
         
         // Welcome Modal
-        const welcomeModal = document.getElementById('welcomeModal');
-        const closeModal = document.getElementById('closeModal');
-        const closeModalBtn = document.getElementById('closeModalBtn');
-        
-        // Show modal on page load
-        document.addEventListener('DOMContentLoaded', function() {
-            welcomeModal.classList.add('active');
-        });
+document.addEventListener('DOMContentLoaded', function() {
+    const welcomeModal = document.getElementById('welcomeModal');
+    const closeModal = document.getElementById('closeModal');
+    const closeModalBtn = document.getElementById('closeModalBtn');
+    
+    if (welcomeModal) {
+        welcomeModal.classList.add('active');
         
         // Close modal
-        closeModal.addEventListener('click', function() {
-            welcomeModal.classList.remove('active');
-        });
+        if (closeModal) {
+            closeModal.addEventListener('click', function() {
+                welcomeModal.classList.remove('active');
+            });
+        }
         
-        closeModalBtn.addEventListener('click', function(e) {
-            e.preventDefault();
-            welcomeModal.classList.remove('active');
-            // Scroll to top
-            window.scrollTo({ top: 0, behavior: 'smooth' });
-        });
+        if (closeModalBtn) {
+            closeModalBtn.addEventListener('click', function(e) {
+                e.preventDefault();
+                welcomeModal.classList.remove('active');
+                // Scroll to top
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            });
+        }
+    }
+});
     
 
         document.addEventListener('DOMContentLoaded', function() {
@@ -250,28 +294,41 @@
 
 
   $(document).ready(function(){
-            $('.product-carousel').slick({
-                dots: true,
-                infinite: true,
-                speed: 600,
-                slidesToShow: 1,
-                slidesToScroll: 1,
-                autoplay: true,
-                autoplaySpeed: 5000,
-                arrows: true,
-                fade: true,
-                cssEase: 'cubic-bezier(0.645, 0.045, 0.355, 1)',
-                responsive: [
-                    {
-                        breakpoint: 768,
-                        settings: {
+            // Initialize product carousel with a longer delay to ensure DOM is fully loaded
+            setTimeout(function() {
+                const productCarousel = $('.product-carousel');
+                if (productCarousel.length > 0 && !productCarousel.hasClass('slick-initialized')) {
+                    try {
+                        productCarousel.slick({
+                            dots: true,
+                            infinite: true,
+                            speed: 600,
+                            slidesToShow: 1,
+                            slidesToScroll: 1,
+                            autoplay: true,
+                            autoplaySpeed: 5000,
                             arrows: true,
-                            swipe: true,
-                            swipeToSlide: true
-                        }
+                            fade: true,
+                            cssEase: 'cubic-bezier(0.645, 0.045, 0.355, 1)',
+                            responsive: [
+                                {
+                                    breakpoint: 768,
+                                    settings: {
+                                        arrows: true,
+                                        swipe: true,
+                                        swipeToSlide: true
+                                    }
+                                }
+                            ]
+                        });
+                        console.log('Product carousel initialized successfully');
+                    } catch (error) {
+                        console.error('Error initializing product carousel:', error);
                     }
-                ]
-            });
+                } else {
+                    console.log('Product carousel not found or already initialized');
+                }
+            }, 500); // Increased delay to 500ms
             
             // Add hover effects to cards
             $('.link-card').hover(function() {
