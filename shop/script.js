@@ -1204,7 +1204,11 @@ function renderProducts(productsArray) {
                 <ul class="product-specs">
                     ${product.specs.map(spec => `<li><i class="fas fa-check-circle"></i> ${spec}</li>`).join('')}
                 </ul>
-                <div class="product-price">₵${product.minPrice} - ₵${product.maxPrice}</div>
+                <div class="product-price">
+                    ${product.minPrice !== undefined ? `₵${product.minPrice}` : ''}
+                    ${product.minPrice !== undefined && product.maxPrice !== undefined ? ' - ' : ''}
+                    ${product.maxPrice !== undefined ? `₵${product.maxPrice}` : ''}
+                </div>
                 <div class="product-meta">
                     <span><i class="fas fa-box"></i> Min. Order: ${product.minOrder} pieces</span>
                     <span><i class="fas fa-shipping-fast"></i> ${product.shipping}</span>
@@ -1684,6 +1688,16 @@ function setupEventListeners() {
             categoriesDropdown.classList.remove('active');
         }
     });
+    
+    // Apply Filters button event listener
+    const applyFiltersBtn = document.getElementById('apply-filters');
+    if (applyFiltersBtn) {
+        applyFiltersBtn.addEventListener('click', () => {
+            applyFilters();
+            filtersModal.style.display = 'none';
+            document.body.style.overflow = 'auto';
+        });
+    }
     
     resetAllBtn.addEventListener('click', resetAllFilters);
 }
