@@ -3,13 +3,12 @@
         document.addEventListener('DOMContentLoaded', function() {
             const hamburger = document.getElementById('hamburger');
             const mobileMenu = document.getElementById('mobileMenu');
-            const mobileClose = document.getElementById('mobileClose');
             const mobileMenuOverlay = document.getElementById('mobileMenuOverlay');
             const mobileNavItems = document.querySelectorAll('.mobile-nav-item');
             const body = document.body;
             
             // Check if mobile menu elements exist
-            if (!hamburger || !mobileMenu || !mobileClose || !mobileMenuOverlay) {
+            if (!hamburger || !mobileMenu || !mobileMenuOverlay) {
                 console.log('Mobile menu elements not found');
                 return;
             }
@@ -65,9 +64,6 @@
                     openMobileMenu();
                 }
             });
-            
-            // Close menu with close button
-            mobileClose.addEventListener('click', closeMobileMenu);
             
             // Close menu when clicking overlay
             mobileMenuOverlay.addEventListener('click', closeMobileMenu);
