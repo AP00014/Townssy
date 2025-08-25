@@ -1332,7 +1332,6 @@ function renderServices(servicesArray) {
                 </div>
                 <div class="service-delivery">
                     <span><i class="fas fa-clock"></i> Delivery: ${service.delivery}</span>
-                    <span class="service-price">₵${service.price}</span>
                 </div>
                 <div class="service-provider">
                     <div class="provider-logo">${service.provider.substring(0,2)}</div>
@@ -1557,6 +1556,7 @@ function setupEventListeners() {
         currentFilters.minPrice = parseFloat(minPriceInput.value) || 0;
         currentFilters.maxPrice = parseFloat(maxPriceInput.value) || Infinity;
         applyFilters();
+        filtersModal.style.display = 'none';
     });
     
     resetPriceBtn.addEventListener('click', () => {
